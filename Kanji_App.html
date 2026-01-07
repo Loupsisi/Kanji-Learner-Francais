@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="fr">
+    <meta charset="UTF-8">
+    <title>Mon App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="AffichageKanji() ; ModeSens() ; ToggleLastKanjiBorder(0) ; InitCombo()" onkeydown="if(event.key === 'Escape') {Skip() ; AffichageKanji()}">
+    <h1>Kanji Learner</h1>
+    <div class="Boutons">
+        <div class="BoutonsMode">
+            <div class="TextMode">Mode selection</div>
+            <button id="Sens" class="Sens ButtonMode"  onclick="ModeSens() ; LongueurPartieUnclicked()">Signification</button>
+            <button id="On" class="On ButtonMode" onclick="ModeOn() ; LongueurPartieUnclicked()">Lecture On</button>
+            <button id="Kun" class="Kun ButtonMode" onclick="ModeKun() ; LongueurPartieUnclicked()">Lecture Kun</button>
+        </div>
+        <button class="ResetButton" onclick="PartieReset()">Reset</button>
+        <button class="KanjiButton" onclick="LongueurPartieUnclicked() ; AfficheKanji() ">Kanjis</button>   
+    </div>
+    <div class="AffichagePartieBox">
+        <div class="AvancementBox">
+            <div id="JusteAvancement" class="JusteAvancement">0</div>
+            <div id="FauxAvancement" class="FauxAvancement">0</div>
+        </div>
+        <div id="CompteurPartieBox" class="CompteurPartieBox">
+        <button id="CompteurPartie" class="CompteurPartie" onclick="LongueurPartieClicked()">0/30</button>
+        </div>
+    </div>
+
+    <div id="ModeText"></div>
+    <div class="ComboBox">
+        <div id="BestCombo" class="BestCombo">Meilleur Combo : </div>
+        <div id="BestComboNumber" class="BestComboNumber">0</div>
+        <div id="ComboText" class="Combo">Combo : </div>
+        <div id="ComboNumber" class="ComboNumber">0</div>
+    </div>
+
+    <div class="KanjiBox">
+        <div id="Kanji" class="Kanji"></div>
+        <div id="KanjiPrecedant" class="KanjiPrecedant"></div>
+    </div>
+
+    <div class="SkipButtonBox"><button class="SkipButton" onclick="Skip() ; AffichageKanji() ; LongueurPartieUnclicked()">Skip</div>
+        
+    <input type="text" id="Answer" class="Texte" autocomplete="off" onkeyup="getValue(0)" onkeydown="if(event.key === 'Enter') getValue(1)" onclick="LongueurPartieUnclicked()" placeholder="Never Give Up !">
+
+    <p id="affichage"></p>
+
+    <div class="HistoriqueBox">
+        <div id="HistoriqueJuste" class="HistoriqueVrai"></div>
+        <div id="HistoriqueFaux" class="HistoriqueFaux"></div>
+    </div>
+
+    <div id="ZoneTableau"></div>
+
+    <div id="ResetWallBox">
+        <div class="ResetWall1"></div>
+        <div class="ResetWall2"></div>
+        <div class="ResetWall3"></div>
+        <div class="ResetWall4"></div>
+    </div>
+
+  
+    <script src="script.js"></script>
+</body>
+</html>

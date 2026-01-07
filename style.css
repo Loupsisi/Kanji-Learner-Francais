@@ -1,0 +1,510 @@
+button {
+
+    user-select: none;
+}
+
+.Boutons {
+
+    display: flex;
+    align-items: flex-start;
+
+}
+
+button:hover {
+
+    background-color: lightgray;
+    border-radius: 10px;
+    border-color: gray;
+}
+
+.BoutonClique {
+
+    animation: 
+    AnimationBoutonClique 4s linear infinite ;
+
+}
+
+.TextMode {
+
+    text-align: center;
+    font-weight: bold;
+}
+
+.BoutonsMode {
+    background-color: lightgray;
+    border: 5px solid black;
+    border-radius: 5px;
+    height: 45px;
+    user-select: none;
+
+}
+
+.ButtonMode {
+    
+
+    border-radius: 7px;
+    height: 25px;
+    font-weight: bold;
+}
+
+
+.ResetButton {
+
+    width: 60px;
+    height: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 2px;
+
+}
+
+.KanjiButton {
+
+    width: 60px;
+    height: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 2px;
+
+}
+
+.CompteurPartieBox {
+
+    display:flex;
+    align-items: flex-start;
+    align-items: center;
+}
+
+.CompteurPartie {
+   
+    display: flex;
+    text-align: center;
+    font-size: 25px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.CompteurPartieButtons {
+
+    height: 22px;
+    width: 35px;
+    border: 2px solid black;
+    border-radius: 7px; 
+    font-weight: bold;
+}
+
+
+
+.AffichagePartieBox {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100%;
+    user-select: none;
+}
+
+.AvancementBox {
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: stretch;
+    align-content: right;
+
+}
+
+.JusteAvancement {
+
+    width: 90px;
+    height: 20px;
+    top: 10px;
+
+    background-color: green;
+    justify-content: center;
+    display: flex;
+
+
+
+}
+
+.FauxAvancement {
+
+    width: 90px;
+    height: 20px;
+
+    background-color: red;
+    justify-content: center;
+    display: flex;
+    text-align: left;
+
+}
+
+.ComboBox {
+
+    display: flex; 
+    top: 75px;
+    position: relative;
+    flex-direction: column;
+    border: 3px solid black;
+    width: 140px;
+    background-color: rgb(224, 224, 224);
+    user-select: none;
+
+}
+
+.Combo {
+
+    font-size: 16px;
+    margin-right: 3px;
+    display: flex;
+}
+
+.ComboNumber {
+
+    position: absolute;
+    font-size: 16px;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    top: 19px;
+    left: 60px;
+}
+
+.BestCombo {
+
+    display:flex;
+}
+
+.BestComboNumber {
+     position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    left: 119px;
+
+}
+
+
+.KanjiBox {
+
+    display: flex;
+    justify-self: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+}
+
+.Kanji {
+    font-size: 80px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+
+}
+
+
+.KanjiPrecedant {
+    border: 3px solid black;
+    font-size: 15px;
+    width: 110px;
+    right: 0px;
+    top: -40px;
+    display: flex;
+    align-content: right;
+    position: absolute;
+
+
+}
+
+.SkipButtonBox {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.SkipButton {
+
+    display: flex;
+    justify-content: center;
+    width: 18%;
+    font-weight: bold;
+    border-width: 2px;
+    border-radius: 5px;
+
+
+}
+
+.Texte {
+ 
+    font-weight: 600;
+    text-align: center;
+    border-color: black;
+    border-width: 3px;
+    border-radius: 5px;  
+    background-color: rgb(220, 218, 218);
+    width: 100%;
+    user-select: none;
+}
+
+.Texte:focus {
+
+    animation:
+    TextBoxFlicker 2s linear infinite;
+}
+
+.HistoriqueBox {
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    justify-self: center;
+    background-color: white;
+    margin: 20px 0;
+    border: 3px solid black;
+
+}
+
+.HistoriqueVrai {
+
+    display: flex;
+    font-size: 16px;
+    text-align: left;
+    justify-content: right;
+    color: black;
+
+}
+
+.HistoriqueVrai td {
+
+    background-color: lightgreen;
+
+}
+
+.KanjiVraiTd {
+
+    font-weight: bold;
+    background-color: rgb(85, 211, 85) !important;
+
+}
+
+.HistoriqueFaux {
+
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: white;
+}
+
+.HistoriqueFaux td {
+
+    background-color: lightcoral;
+}
+
+.KanjiFauxTd {
+
+    font-weight: bold;
+    background-color: rgb(231, 86, 86) !important;
+
+}
+
+.ApparitionHistorique {
+
+    animation: ApparitionHistoriqueAnimation 0.6s linear forwards;
+
+}
+
+
+.FinPartieBox {
+
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-size: 25px;
+
+}
+
+.RecommencerButton {
+
+    border: 2px solid black;
+    height: 40px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 40%;
+    border-radius: 5px;
+}
+
+
+.Tableau_Kanji {
+
+    border-color: black;
+    background-color: #f9f9f9;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: lightgrey;
+}
+
+.Tableau_Kanji td {
+    border: 2px solid black;
+    text-align: center;
+    font-size: 15px;
+    width: 100px;
+
+
+}
+
+.ResetWall1 {
+
+    pointer-events: none;
+    user-select: none;
+    position:absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 1000px;
+    top: 200px;
+  
+}
+
+.ResetWall2 {
+
+    pointer-events: none;
+    user-select: none;
+    position:absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 1000px;
+    top: -700px;
+  
+}
+
+.ResetWall3 {
+
+    pointer-events: none;
+    user-select: none;
+    position:absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 1000px;
+    top: 0px;
+    right: -260px;
+  
+}
+
+.ResetWall4 {
+
+    pointer-events: none;
+    user-select: none;
+    position:absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 1000px;
+    top: 0px;
+    left: -190px;
+  
+  
+}
+
+.ResetWall1InAnimation {
+
+    background-color: white; 
+    border: 2px solid grey;
+
+  animation: 
+    ResetWall1MovingAnimation 0.6s linear backwards;
+
+}
+
+.ResetWall2InAnimation {
+
+    background-color: white;
+    border: 2px solid grey;
+
+  animation: 
+    ResetWall2MovingAnimation 0.7s linear backwards;
+
+}
+
+.ResetWall3InAnimation {
+
+    background-color: white;
+    border: 2px solid grey;
+
+  animation: 
+    ResetWall3MovingAnimation 0.6s linear backwards;
+
+}
+
+.ResetWall4InAnimation {
+
+    background-color: white;
+    border: 2px solid grey;
+
+  animation: 
+    ResetWall4MovingAnimation 0.6s linear backwards;
+
+}
+
+
+/* -------------------Animations------------------- */
+
+
+@keyframes TextBoxFlicker {
+
+    33% { background-color: rgb(220, 218, 218);}
+    66% { background-color: white;}
+    100% { background-color: rgb(220, 218, 218);} 
+}
+
+
+@keyframes AnimationBoutonClique {
+
+    1% { border: 4px solid black}
+    50% { border: 4px solid rgb(135, 135, 135)}
+    66% { border: 4px solid rgb(135, 135, 135)}
+    100% { border: 4px solid black}
+
+
+    
+}
+
+/*
+@keyframes ResetWall1MovingAnimation {
+
+    from { top: 200px}
+    to { top: 1000px}
+    
+}
+
+@keyframes ResetWall2MovingAnimation {
+
+    from { top: -700px}
+    to { top: -1200px}
+    
+}
+
+@keyframes ResetWall3MovingAnimation {
+
+    from { right: -190px}
+    to { right: -600px}
+    
+}
+
+@keyframes ResetWall4MovingAnimation {
+
+    from { left: -190px}
+    to { left: -600px}
+    
+}
+*/
+@keyframes ApparitionHistoriqueAnimation {
+
+    from { opacity: 0;}
+    to { opacity: 1;}
+    
+}
