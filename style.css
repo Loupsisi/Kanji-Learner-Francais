@@ -7,6 +7,7 @@ button {
 
     display: flex;
     align-items: flex-start;
+    min-width: 500px;
 
 }
 
@@ -66,6 +67,16 @@ button:hover {
     border-radius: 5px;
     border-width: 2px;
 
+}
+
+.TextJLPTSelected {
+
+    font-size: 18px;
+    position: absolute;
+    left: 307px;
+    top: 110px;
+    min-width: 210px;
+    
 }
 
 .CompteurPartieBox {
@@ -193,6 +204,7 @@ button:hover {
     align-items: center;
     position: relative;
     width: 80%;
+    min-width: 500px;
 }
 
 .Kanji {
@@ -338,7 +350,6 @@ button:hover {
     border-radius: 5px;
 }
 
-
 .Tableau_Kanji {
 
     border-color: black;
@@ -354,9 +365,74 @@ button:hover {
     border: 2px solid black;
     text-align: center;
     font-size: 15px;
-    width: 100px;
+    width: 130px;
 
 
+}
+
+
+
+.LevelSelector {
+    
+    width: 60px;
+    height: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 2px;
+
+}
+
+.PageOpacitor {
+
+    background-color: black;
+    opacity: 50%;
+    width: 150%;
+    margin: 0;
+    position: absolute;
+    height: 2000px;
+    top: -300px;
+    left: -110px;
+
+    user-select: none;
+
+}
+
+.AffichageJLPT {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+    border: 7px solid darkgray;
+    position: absolute;
+    top: 30%;
+    right: 25%;
+    width: 50%;
+    height: 30%;
+    align-items: flex-start;
+    align-content: center;
+    justify-self: center;
+    min-width: 250px;
+}
+
+.JLPTText {
+
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.JLPTButton {
+
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 1px;
+}
+
+.JLPTRetour {
+
+    position:absolute;
+    bottom: 5%;
+    right: 5%;
 }
 
 .ResetWall1 {
