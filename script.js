@@ -673,8 +673,8 @@ let CompteurCombo = parseInt(ComboString);
 let CompteurPartie = 0;
 
 let CalculPx = 0;
-let LastPosVrai = "";
-let LastPosFaux = "";
+let LastPosVrai = "50%";
+let LastPosFaux = "50%";
 
 let ZoneKanjiPrecedant = document.getElementById("KanjiPrecedant");
 let ZoneHistorique = document.querySelector(".HistoriqueBox");
@@ -1412,9 +1412,9 @@ function ComboMeter(Gagner) { // Gestion du Combo et du Meilleur Combo
         }
 
             ComboCSS.animate([ // Animation du Nombre du combo devient plus grand puis rapticie (devient + petit)
-            { fontSize: "16px"}, 
-            { fontSize: "25px"},  
-            { fontSize: "16px"},
+            { color: "black"},
+            { color: "white"},
+            { color: "black"}
         ], {
             duration: 750,
             fill: 'forwards',   // Garde la position finale
@@ -1540,7 +1540,7 @@ function AnimationScore(Reset) { // Gère l'animation des carré de vert et roug
 
     const AnimationVrai = AffichageVraiCSS.animate([ // fait grossir le carré vert de sa position actuelle à la nouvelle
         { width: `${LastPosVrai}`},  // From
-        { width: (HistoriquePourVrai.length * CalculPx)+`px` }  // To
+        { width: (HistoriquePourVrai.length * CalculPx)+`%` }  // To
     ], {
         duration: 750,
         fill: 'forwards',   // Garde la position finale
@@ -1549,22 +1549,22 @@ function AnimationScore(Reset) { // Gère l'animation des carré de vert et roug
 
     const AnimationFaux = AffichageFauxCSS.animate([ // Pareil pour que le carré vert 
         { width: LastPosFaux},  // From
-        { width: (HistoriquePourFaux.length * CalculPx)+`px` }  // To
+        { width: (HistoriquePourFaux.length * CalculPx)+`%` }  // To
     ], {
         duration: 750,
         fill: 'forwards',   // Garde la position finale
         easing: 'ease-out'
     });
 
-    LastPosFaux = `${HistoriquePourFaux.length * CalculPx}px`;
-    LastPosVrai = `${HistoriquePourVrai.length * CalculPx}px`;;
+    LastPosFaux = `${HistoriquePourFaux.length * CalculPx}%`;
+    LastPosVrai = `${HistoriquePourVrai.length * CalculPx}%`;;
 
     }
     else if (Reset == 1) { // Si il y a Reset met l'animation de reset
 
     const AnimationVrai = AffichageVraiCSS.animate([ // fait grossir le carré vert de sa position jusquà la position initiale
-        { width: LastPosVrai}, 
-        { width: '90px' }  
+        { width: `${LastPosVrai}`}, 
+        { width: '50%' }  
     ], {
         duration: 750,
         fill: 'forwards',   // Garde la position finale
@@ -1572,16 +1572,16 @@ function AnimationScore(Reset) { // Gère l'animation des carré de vert et roug
     });
 
     const AnimationFaux = AffichageFauxCSS.animate([ // pareil que le carré vert 
-        { width: LastPosFaux},  
-        { width:'90px' }  
+        { width: `${LastPosFaux}`},  
+        { width:'50%' }  
     ], {
         duration: 750,
         fill: 'forwards',   // Garde la position finale
         easing: 'ease-out'
     });
 
-    LastPosFaux = "90px";
-    LastPosVrai = "90px";
+    LastPosFaux = "50%";
+    LastPosVrai = "50%";
 
 }
 

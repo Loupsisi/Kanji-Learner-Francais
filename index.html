@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head lang="fr">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="AffichageKanji() ; ModeSens() ; ToggleLastKanjiBorder(0) ; InitCombo() ; KanjiSelectionOnLoad()" onkeydown="if(event.key === 'Escape') {Skip() ; AffichageKanji()}">
-    <h1 class="H1">Kanji Learner</h1>
     <div class="Boutons">
+            
         <div class="BoutonsMode">
             <div class="TextMode">Mode selection</div>
-            <button id="Sens" class="Sens ButtonMode"  onclick="ModeSens() ; LongueurPartieUnclicked()">Signification</button>
-            <button id="On" class="On ButtonMode" onclick="ModeOn() ; LongueurPartieUnclicked()">Lecture On</button>
-            <button id="Kun" class="Kun ButtonMode" onclick="ModeKun() ; LongueurPartieUnclicked()">Lecture Kun</button>
+            <div class="BoutonsModeBox">
+                <button id="Sens" class="Sens ButtonMode"  onclick="ModeSens() ; LongueurPartieUnclicked()">Signification</button>
+                <button id="On" class="On ButtonMode" onclick="ModeOn() ; LongueurPartieUnclicked()">Lecture On</button>
+                <button id="Kun" class="Kun ButtonMode" onclick="ModeKun() ; LongueurPartieUnclicked()">Lecture Kun</button>
+            </div>
         </div>
-         <div id="TextJLPTSelected" class="TextJLPTSelected">Niveau : JLPT N5 Groupe 1</div>
-        <button class="ResetButton" onclick="PartieReset()">Reset</button>
-        <button id="LevelSelector" class="LevelSelector" onclick="KanjiSelectionApparition()">Niveau</button>
-        <button class="KanjiButton" onclick="LongueurPartieUnclicked() ; AfficheKanji() ">Kanjis</button>   
+        <div class="BoutonsUtilBox">
+            <button class="ResetButton" onclick="PartieReset()">Reset</button>
+            <button id="LevelSelector" class="LevelSelector" onclick="KanjiSelectionApparition()">Niveau</button>
+            <button class="KanjiButton" onclick="LongueurPartieUnclicked() ; AfficheKanji() ">Kanjis</button>   
+        </div>
     </div>
     
     <div class="AffichagePartieBox">
@@ -31,11 +34,16 @@
     </div>
 
     <div id="ModeText"></div>
+    <div id="TextJLPTSelected" class="TextJLPTSelected">Niveau : JLPT N5 Groupe 1</div>
     <div class="ComboBox">
-        <div id="BestCombo" class="BestCombo">Meilleur Combo : </div>
-        <div id="BestComboNumber" class="BestComboNumber">0</div>
-        <div id="ComboText" class="Combo">Combo : </div>
-        <div id="ComboNumber" class="ComboNumber">0</div>
+        <div class="ComboTextBox">
+            <div id="BestCombo" class="BestCombo">Meilleur Combo : </div>
+            <div id="ComboText" class="Combo">Combo : </div>
+        </div>
+        <div class="ComboNumberBox">
+            <div id="BestComboNumber" class="BestComboNumber">0</div>
+            <div id="ComboNumber" class="ComboNumber">0</div>
+        </div>
     </div>
 
     <div class="KanjiBox">
@@ -47,7 +55,7 @@
         
     <input type="text" id="Answer" class="Texte" autocomplete="off" onkeyup="getValue(0)" onkeydown="if(event.key === 'Enter') getValue(1)" onclick="LongueurPartieUnclicked()" placeholder="Never Give Up !">
 
-    <p id="affichage"></p>
+    <!--<p id="affichage"></p>-->
     
     <div class="HistoriqueBox">
         <div id="HistoriqueJuste" class="HistoriqueVrai"></div>
@@ -58,12 +66,14 @@
 
     <div id="AffichageJLPTConteneur"></div>
 
-    <div id="ResetWallBox">
-        <div class="ResetWall1"></div>
-        <div class="ResetWall2"></div>
-        <div class="ResetWall3"></div>
-        <div class="ResetWall4"></div>
-    </div>
+    <!--
+        <div id="ResetWallBox">
+            <div class="ResetWall1"></div>
+            <div class="ResetWall2"></div>
+            <div class="ResetWall3"></div>
+            <div class="ResetWall4"></div>
+        </div>
+    -->
 
     
 
