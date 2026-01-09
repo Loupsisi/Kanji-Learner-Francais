@@ -60,7 +60,7 @@ const kanjiDataBase = [
     {kanji: "入", sens: "entrer", On: "Nyuu", kun: "hairu ; ireru"},
     {kanji: "口", sens: "bouche", On: "Kou ; Ku", kun: "kuchi"},
     {kanji: "白", sens: "blanc", On: "Haku ; Byaku", kun: "shiro"},
-    {kanji: "目", sens: "œil", On: "Moku", kun: "me"},
+    {kanji: "目", sens: "oeil", On: "Moku", kun: "me"},
     {kanji: "耳", sens: "oreille", On: "Ji", kun: "mimi"},
     {kanji: "手", sens: "main", On: "Shu", kun: "te"},
     {kanji: "足", sens: "pied, jambe, suffire", On: "Soku", kun: "ashi ; tariru"},
@@ -96,7 +96,7 @@ const kanjiDataBase = [
     {kanji: "者", sens: "quelqu'un, personne", On: "Sha", kun: "mono"},
     {kanji: "同", sens: "identique, même", On: "Dou", kun: "onaji"},
     {kanji: "方", sens: "direction, manière", On: "Hou", kun: "kata"},
-    {kanji: "目", sens: "œil, point", On: "Moku ; Boku", kun: "me ; ma"},
+    {kanji: "目", sens: "oeil, point", On: "Moku ; Boku", kun: "me ; ma"},
     {kanji: "理", sens: "raison, logique", On: "Ri", kun: "kotowari"},
     {kanji: "力", sens: "force, puissance", On: "Ryoku ; Riki", kun: "chikara"},
     {kanji: "場", sens: "lieu, endroit", On: "Jou", kun: "ba"},
@@ -110,7 +110,7 @@ const kanjiDataBase = [
     {kanji: "明", sens: "clair, brillant", On: "Mei ; Myou", kun: "akarui ; akiraka ; akari"},
     {kanji: "私", sens: "je, privé", On: "Shi", kun: "watashi ; watakushi"},
     {kanji: "発", sens: "départ, émission", On: "Hatsu ; Hotsu", kun: ""},
-    {kanji: "心", sens: "cœur, esprit", On: "Shin", kun: "kokoro"},
+    {kanji: "心", sens: "coeur, esprit", On: "Shin", kun: "kokoro"},
     {kanji: "意", sens: "idée, pensée, attention", On: "I", kun: ""},
     {kanji: "度", sens: "degré, fois", On: "Do ; To ; Taku", kun: "tabi"},
     {kanji: "知", sens: "savoir, connaître", On: "Chi", kun: "shiru"},
@@ -146,7 +146,7 @@ const kanjiDataBase = [
     {kanji: "音", sens: "son", On: "On ; In", kun: "oto ; ne"},
     {kanji: "道", sens: "chemin, route", On: "Dou", kun: "michi"},
     {kanji: "親", sens: "parent, proche", On: "Shin", kun: "oya ; shitashii"},
-    {kanji: "着", sens: "arriver, porter (vêtement)", On: "Chaku ; Jaku", kun: "kiru ; tsuku"},
+    {kanji: "着", sens: "arriver, porter , ( porter = vêtement)", On: "Chaku ; Jaku", kun: "kiru ; tsuku"},
     {kanji: "始", sens: "commencer", On: "Shi", kun: "hajimeru ; hajimaru"},
     {kanji: "多", sens: "beaucoup", On: "Ta", kun: "ooi"},
     {kanji: "早", sens: "tôt, rapide", On: "Sou ; Sattsu", kun: "hayai"},
@@ -161,7 +161,7 @@ const kanjiDataBase = [
     {kanji: "空", sens: "ciel, vide", On: "Kuu", kun: "sora ; aki ; kara"},
     {kanji: "身", sens: "corps, soi-même", On: "Shin", kun: "mi"},
     {kanji: "運", sens: "destin, transporter", On: "Un", kun: "hakobu"},
-    {kanji: "帰", sens: "retour (chez soi)", On: "Ki", kun: "kaeru"},
+    {kanji: "帰", sens: "rentrer chez soi", On: "Ki", kun: "kaeru"},
     {kanji: "集", sens: "rassembler", On: "Shuu", kun: "atsumeru ; atsumaru"},
     {kanji: "急", sens: "urgent, rapide", On: "Kyuu", kun: "isogu"},
     {kanji: "足", sens: "pied, jambe, suffire", On: "Soku", kun: "ashi ; tariru"},
@@ -206,7 +206,7 @@ const kanjiDataBase = [
     {kanji: "冬", sens: "hiver", On: "Tou", kun: "fuyu"},
     {kanji: "不", sens: "négatif, non", On: "Fu ; Bu", kun: ""},
     {kanji: "世", sens: "monde, génération", On: "Sei ; Se", kun: "yo"},
-    {kanji: "乗", sens: "monter (véhicule)", On: "Jou ; Shou", kun: "noru ; noseru"},
+    {kanji: "乗", sens: "monter , ( monter --> dans véhicule)", On: "Jou ; Shou", kun: "noru ; noseru"},
     {kanji: "写", sens: "copier, décrire", On: "Sha ; Ja", kun: "utsusu ; utsuru"},
     {kanji: "低", sens: "bas", On: "Tei", kun: "hikui ; hiku"},
     {kanji: "住", sens: "habiter", On: "Juu ; Chu ; Su", kun: "sumu ; sumau"},
@@ -228,14 +228,14 @@ const kanjiDataBase = [
     {kanji: "貸", sens: "prêter", On: "Tai", kun: "kasu"},
     {kanji: "堂", sens: "hall, temple", On: "Dou", kun: ""},
     {kanji: "借", sens: "emprunter", On: "Shaku", kun: "kariru"},
-    {kanji: "姉", sens: "grande sœur", On: "Shi", kun: "ane"},
+    {kanji: "姉", sens: "grande soeur", On: "Shi", kun: "ane"},
     {kanji: "鳥", sens: "oiseau", On: "Chou", kun: "tori"},
     {kanji: "夕", sens: "soirée", On: "Seki", kun: "yuu"},
     {kanji: "茶", sens: "thé", On: "Cha ; Sa", kun: ""},
     {kanji: "魚", sens: "poisson", On: "Gyo", kun: "uwo ; sakana"},
-    {kanji: "妹", sens: "petite sœur", On: "Mai", kun: "imouto"},
+    {kanji: "妹", sens: "petite soeur", On: "Mai", kun: "imouto"},
     {kanji: "洋", sens: "océan, occidental", On: "You", kun: ""},
-    {kanji: "牛", sens: "vache, bœuf", On: "Gyuu", kun: "ushi"},
+    {kanji: "牛", sens: "vache, boeuf", On: "Gyuu", kun: "ushi"},
     {kanji: "駅", sens: "gare", On: "Eki", kun: ""},
     {kanji: "漢", sens: "Chine, dynastie Han", On: "Kan", kun: ""},
     {kanji: "病", sens: "maladie", On: "Byou ; Hei", kun: "yamai ; yamu"},
@@ -252,7 +252,7 @@ const kanjiDataBase = [
     {kanji: "和", sens: "paix, harmonie, japonais", On: "Wa ; O", kun: "yawaragu ; nagomu"},
     {kanji: "暗", sens: "sombre", On: "An", kun: "kurai"},
     {kanji: "遠", sens: "loin", On: "En ; On", kun: "tooi"},
-    {kanji: "寒", sens: "froid (température)", On: "Kan", kun: "samui"},
+    {kanji: "寒", sens: "froid , (froid --> température)", On: "Kan", kun: "samui"},
     {kanji: "顔", sens: "visage", On: "Gan", kun: "kao"},
     {kanji: "試", sens: "essayer, test", On: "Shi", kun: "kokoromiru ; tamesu"},
     {kanji: "験", sens: "test, preuve", On: "Ken", kun: ""},
@@ -345,7 +345,7 @@ const kanjiDataBase = [
     {kanji: "投", sens: "lancer, jeter", On: "Tou", kun: "nageru"},
     {kanji: "示", sens: "montrer", On: "Ji ; Shi", kun: "shimesu"},
     {kanji: "打", sens: "frapper", On: "Da", kun: "utsu"},
-    {kanji: "予", sens: "préfixe (pré-), moi", On: "Yo", kun: "arakajime"},
+    {kanji: "予", sens: "préfixe , (pré-), moi", On: "Yo", kun: "arakajime"},
     {kanji: "向", sens: "direction, faire face", On: "Kou", kun: "muku ; mukau"},
     {kanji: "更", sens: "encore, renouveler", On: "Kou", kun: "sara ; fukeru"},
     {kanji: "直", sens: "droit, réparer", On: "Choku ; Jiki", kun: "naosu ; tada"},
@@ -453,9 +453,9 @@ const kanjiDataBase = [
     {kanji: "全", sens: "tout, entier", On: "Zen", kun: "subete"},
     {kanji: "最", sens: "le plus", On: "Sai", kun: "motto ; mottomo"},
     {kanji: "無", sens: "rien, néant", On: "Mu ; Bu", kun: "nai"},
-    {kanji: "非", sens: "non-, erreur", On: "Hi", kun: "arazu"},
+    {kanji: "非", sens: "non, erreur", On: "Hi", kun: "arazu"},
     // -----------------JLPT N3 Groupe 5------------ 
-    {kanji: "第", sens: "ordinal (préfixe)", On: "Dai", kun: ""},
+    {kanji: "第", sens: "ordinal , (ordinal = préfixe)", On: "Dai", kun: ""},
     {kanji: "成", sens: "devenir, accomplir", On: "Sei ; Jou", kun: "naru"},
     {kanji: "的", sens: "cible, suffixe d'adjectif", On: "Teki", kun: "mato"},
     {kanji: "期", sens: "période", On: "Ki", kun: ""},
@@ -510,7 +510,7 @@ const kanjiDataBase = [
     {kanji: "捨", sens: "jeter, abandonner", On: "Sha", kun: "suteru"},
     {kanji: "拾", sens: "ramasser, cueillir", On: "Shuu ; Juu", kun: "hirou"},
     {kanji: "曲", sens: "courbe, mélodie", On: "Kyoku", kun: "mageru ; magaru"},
-    {kanji: "脱", sens: "enlever (vêtement), s'échapper", On: "Datsu", kun: "nugu ; nuyeru"},
+    {kanji: "脱", sens: "enlever, (enlever --> vêtement), s'échapper", On: "Datsu", kun: "nugu ; nuyeru"},
     {kanji: "踊", sens: "danser", On: "You", kun: "odoru ; odori"},
     {kanji: "眠", sens: "dormir", On: "Min", kun: "nemuru ; nemui"},
     {kanji: "怖", sens: "peur, effrayant", On: "Fu", kun: "kowai"},
@@ -521,13 +521,13 @@ const kanjiDataBase = [
     {kanji: "置", sens: "poser, placer", On: "Chi", kun: "oku"},
     {kanji: "蔵", sens: "entrepôt, posséder", On: "Zou", kun: "kura"},
     {kanji: "諸", sens: "divers, plusieurs", On: "Sho", kun: "moro"},
-    {kanji: "非", sens: "non-, injustice", On: "Hi", kun: "arazu"},
+    {kanji: "非", sens: "non, injustice", On: "Hi", kun: "arazu"},
     {kanji: "罪", sens: "crime, péché", On: "Zai", kun: "tsumi"},
     {kanji: "候", sens: "climat, saison, attendre", On: "Kou", kun: ""},
     {kanji: "補", sens: "compléter, compenser", On: "Ho", kun: "oginau"},
     {kanji: "刻", sens: "graver, temps, hacher", On: "Koku", kun: "kizamu"},
     {kanji: "劇", sens: "drame, théâtre", On: "Geki", kun: ""},
-    {kanji: "演", sens: "jouer (théâtre), présenter", On: "En", kun: ""},
+    {kanji: "演", sens: "jouer , (jouer --> théâtre), présenter", On: "En", kun: ""},
     {kanji: "観", sens: "observer, vue", On: "Kan", kun: "miru"},
     {kanji: "視", sens: "vision, regarder", On: "Shi", kun: "miru"},
     {kanji: "覚", sens: "mémoriser, s'éveiller", On: "Kaku", kun: "oboeru ; sameru"},
@@ -535,13 +535,13 @@ const kanjiDataBase = [
     {kanji: "疑", sens: "douter, soupçon", On: "Gi", kun: "utagau"},
     {kanji: "範", sens: "modèle, exemple", On: "Han", kun: ""},
     {kanji: "囲", sens: "entourer, enceinte", On: "I", kun: "kakomu ; kakou"},
-    {kanji: "採", sens: "cueillir, adopter (idée)", On: "Sai", kun: "toru"},
+    {kanji: "採", sens: "cueillir, adopter, (adopter --> idée)", On: "Sai", kun: "toru"},
     {kanji: "探", sens: "chercher, explorer", On: "Tan", kun: "sagasu ; saguru"},
     {kanji: "接", sens: "toucher, contacter", On: "Setsu", kun: "tsugu"},
     {kanji: "断", sens: "couper, refuser, décider", On: "Dan", kun: "kotowaru ; tatsu"},
     {kanji: "破", sens: "déchirer, briser", On: "Ha", kun: "yaburu ; yabureru"},
     {kanji: "編", sens: "tricoter, compiler", On: "Hen", kun: "amu"},
-    {kanji: "捜", sens: "rechercher (police)", On: "Sou", kun: "sagasu"},
+    {kanji: "捜", sens: "rechercher , (dans le contexte policier)", On: "Sou", kun: "sagasu"},
     {kanji: "換", sens: "échanger, remplacer", On: "Kan", kun: "kaeru ; kawaru"},
     {kanji: "混", sens: "mélanger", On: "Kon", kun: "mazeru ; mazaru"},
     {kanji: "及", sens: "atteindre, égaler", On: "Kyuu", kun: "oyobu ; oyobosu"},
@@ -563,8 +563,8 @@ const kanjiDataBase = [
     {kanji: "録", sens: "enregistrer", On: "Roku", kun: ""},
     {kanji: "器", sens: "ustensile, instrument", On: "Ki", kun: "utsuwa"},
     {kanji: "具", sens: "outil, ingrédient", On: "Gu", kun: "sonaeru"},
-    {kanji: "枚", sens: "compteur (objets plats)", On: "Mai", kun: ""},
-    {kanji: "冊", sens: "compteur (livres)", On: "Satsu ; Saku", kun: ""},
+    {kanji: "枚", sens: "compteur des objets plats", On: "Mai", kun: ""},
+    {kanji: "冊", sens: "compteur des livres", On: "Satsu ; Saku", kun: ""},
     {kanji: "個", sens: "individu, compteur", On: "Ko", kun: ""},
     {kanji: "香", sens: "parfum, encens", On: "Kou ; Kyou", kun: "kaori ; ka"},
     {kanji: "煙", sens: "fumée", On: "En", kun: "kemuri"},
@@ -617,13 +617,13 @@ const kanjiDataBase = [
     {kanji: "福", sens: "fortune, chance", On: "Fuku", kun: ""},
     {kanji: "健", sens: "santé, vigoureux", On: "Ken", kun: "sukoyaka"},
     {kanji: "康", sens: "santé, paix", On: "Kou", kun: ""},
-    {kanji: "診", sens: "examiner (médical)", On: "Shin", kun: "miru"},
+    {kanji: "診", sens: "examiner , (examiner = médical)", On: "Shin", kun: "miru"},
     {kanji: "療", sens: "soigner", On: "Ryou", kun: ""},
     {kanji: "命", sens: "vie, destin", On: "Mei ; Myou", kun: "inochi"},
     {kanji: "居", sens: "résider, être là", On: "Kyo", kun: "iru"},
     {kanji: "留", sens: "rester, fixer", On: "Ryuu ; Ru", kun: "tomaru"},
     {kanji: "守", sens: "protéger, garder", On: "Shu ; Su", kun: "mamoru"},
-    {kanji: "召", sens: "appeler, manger (honorifique)", On: "Shou", kun: "mesu"},
+    {kanji: "召", sens: "appeler, manger , (manger = honorifique)", On: "Shou", kun: "mesu"},
     {kanji: "願", sens: "souhaiter", On: "Gan", kun: "negau"},
     {kanji: "件", sens: "affaire, cas", On: "Ken", kun: ""},
     {kanji: "再", sens: "à nouveau", On: "Sai ; Sa", kun: "futatabi"},
@@ -710,9 +710,9 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
 
     Item = kanjiDataBase[NombreRandom];
 
-    Sens = Item.sens.trim().toLowerCase().split(","); // Crée les réponses à comparé avec l'utilisateur
-    On = Item.On.trim().toLowerCase().split(";");
-    Kun = Item.kun.trim().toLowerCase().split(";");
+    Sens = Item.sens.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(","); // Crée les réponses à comparé avec l'utilisateur
+    On = Item.On.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+    Kun = Item.kun.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
 
 
     let SensCorrect = Sens.some(possibilite => { // Compartitionne les réponses
@@ -809,7 +809,7 @@ function ReponseUtilisateur() { // Prend ce que l'utilisateur écrit dans le inp
 
     boxInput = document.getElementById("Answer");
 
-    const Reponse = boxInput.value.trim().toLowerCase();
+    const Reponse = boxInput.value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     return Reponse;
 }
