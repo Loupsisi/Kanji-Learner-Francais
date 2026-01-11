@@ -458,11 +458,11 @@ button:hover {
 .PageOpacitor {
 
     background-color: black;
-    opacity: 50%;
+    opacity: 40%;
     width: 150%;
     margin: 0;
     position: absolute;
-    height: 3000px;
+    height:160ch;
     top: -300px;
     left: -110px;
     user-select: none;
@@ -511,7 +511,47 @@ button:hover {
     right: 5%;
 }
 
-/*
+
+.TableauKanjiBox {
+
+    width: 80%;
+    position:absolute;
+    top: 15%;
+    left: 10%;
+    background-color: gray;
+    border: 5px solid black;
+    border-radius: 14px;
+    text-align: left;
+
+}
+
+.TableauKanjiBox2 {
+
+    margin: 10px;
+    background-color: lightgray;
+    border: 5px solid darkgrey;
+    border-radius: 10px;
+    padding: 10px;
+    
+
+}
+
+.KanjiTableauBouton {
+
+    border: solid black 2px;
+    border-radius: 20px;
+    background-color: transparent;
+    font-size: 13px;
+}
+
+
+.JLPTTableau {
+
+    margin-left: 7.2ch;
+}
+
+
+
 .ResetWall1 {
 
     pointer-events: none;
@@ -519,8 +559,8 @@ button:hover {
     position:absolute;
     background-color: transparent;
     width: 100%;
-    height: 1000px;
-    top: 200px;
+    height: 50ch;
+    top: 45ch;
   
 }
 
@@ -531,8 +571,8 @@ button:hover {
     position:absolute;
     background-color: transparent;
     width: 100%;
-    height: 1000px;
-    top: -700px;
+    height: 50ch;
+    top: -10ch;
   
 }
 
@@ -543,9 +583,9 @@ button:hover {
     position:absolute;
     background-color: transparent;
     width: 100%;
-    height: 1000px;
+    height: 100ch;
     top: 0px;
-    right: -260px;
+    right: -65ch;
   
 }
 
@@ -556,9 +596,9 @@ button:hover {
     position:absolute;
     background-color: transparent;
     width: 100%;
-    height: 1000px;
+    height: 100ch;
     top: 0px;
-    left: -190px;
+    left: -65ch;
   
   
 }
@@ -569,7 +609,7 @@ button:hover {
     border: 2px solid grey;
 
   animation: 
-    ResetWall1MovingAnimation 0.6s linear backwards;
+    ResetWall1MovingAnimation 0.9s linear backwards;
 
 }
 
@@ -579,7 +619,7 @@ button:hover {
     border: 2px solid grey;
 
   animation: 
-    ResetWall2MovingAnimation 0.7s linear backwards;
+    ResetWall2MovingAnimation 1s linear backwards;
 
 }
 
@@ -589,7 +629,7 @@ button:hover {
     border: 2px solid grey;
 
   animation: 
-    ResetWall3MovingAnimation 0.6s linear backwards;
+    ResetWall3MovingAnimation 0.9s linear backwards;
 
 }
 
@@ -599,10 +639,10 @@ button:hover {
     border: 2px solid grey;
 
   animation: 
-    ResetWall4MovingAnimation 0.6s linear backwards;
+    ResetWall4MovingAnimation 0.9s linear backwards;
 
 }
-*/
+
 
 /* -------------------Animations------------------- */
 
@@ -626,35 +666,35 @@ button:hover {
     
 }
 
-/*
+
 @keyframes ResetWall1MovingAnimation {
 
-    from { top: 200px}
-    to { top: 1000px}
+    from { top: 45ch}
+    to { top: 135ch}
     
 }
 
 @keyframes ResetWall2MovingAnimation {
 
-    from { top: -700px}
-    to { top: -1200px}
+    from { top: -10ch}
+    to { top: -90ch}
     
 }
 
 @keyframes ResetWall3MovingAnimation {
 
-    from { right: -190px}
-    to { right: -600px}
+    from { right: -65ch}
+    to { right: -200ch}
     
 }
 
 @keyframes ResetWall4MovingAnimation {
 
-    from { left: -190px}
-    to { left: -600px}
+    from { left: -65ch}
+    to { left: -200ch}
     
 }
-*/
+
 @keyframes ApparitionHistoriqueAnimation {
 
     from { opacity: 0;}

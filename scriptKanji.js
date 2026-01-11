@@ -700,6 +700,10 @@ let GroupSelect = parseInt(GroupSelectString) || 1;
 let SelectionKanji = JSON.parse(localStorage.getItem("SelectionSaved")) || [0,39];
 let JLPTAfficheTrue = false;
 
+let AfficheKanjiNow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let NumJLPT = 0;
+let LockTableau = false; 
+
 //-------------------------------------------Fonctions------------------------------------------
 
 // ------------------------------Gestion des réponses-----------------------
@@ -913,7 +917,7 @@ function PartieReset() { // Remet à 0 quasiment tout sauf le Combo Max et le mo
     ToggleLastKanjiBorder(0);
     // ComboMeter(0);
     LongueurPartieUnclicked();
-    // ResetWallAnimation();
+    ResetWallAnimation();
 
 
 }
@@ -1167,12 +1171,12 @@ function KanjiSelection(JLPT, Group) {
     PartieReset();
 }
 
-function KanjiDansTableau() { //  Crée une variable string qui contient tout le contenu du tableau de kanji
+function KanjiDansTableau(Kanji) { //  Crée une variable string qui contient tout le contenu du tableau de kanji
 
     let CeKanji = "";
     let KanjiDuTableau = kanjiDataBase[0];
 
-    for (let i = 0; i < kanjiDataBase.length; i++) { // Pour chaque éléments dans le tableau(valeurs) de kanji crée une ligne dans un tableau
+    for (let i = Kanji[0]; i <= Kanji[1]; i++) { // Pour chaque éléments dans le tableau(valeurs) de kanji crée une ligne dans un tableau
 
         KanjiDuTableau = kanjiDataBase[i];
         CeKanji += `
@@ -1189,27 +1193,87 @@ function KanjiDansTableau() { //  Crée une variable string qui contient tout le
 
 }
 
-function AfficheKanji() { // Affiche le tableau de kanji à l'aide de la fonction KanjiDansTableau()
+function AfficheTableauKanji() {
+
+    const TableauKanjiElement = document.getElementById("TableauKanjiConteneur");
+
+    if (LockTableau == false) {
+
+        TableauKanjiElement.innerHTML = `
+        <p id="PageOpacitor" class="PageOpacitor"></p>
+        <div id="ZoneTableau" class="TableauKanjiBox">
+            <div class="TableauKanjiBox2">
+                <p>Tableau de kanji</p>
+                <p>--- JLPT N5 ---</p>
+                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 1)">+</button><div id="JLPT5G1Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 2)">+</button><div id="JLPT5G2Tableau" class="JLPTTableau"></div></p>
+                <p>--- JLPT N4 ---</p>
+                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 1)">+</button><div id="JLPT4G1Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 2)">+</button><div id="JLPT4G2Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 3)">+</button><div id="JLPT4G3Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 4)">+</button><div id="JLPT4G4Tableau" class="JLPTTableau"></div></p>
+                <p>--- JLPT N3 ---</p>
+                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 1)">+</button><div id="JLPT3G1Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 2)">+</button><div id="JLPT3G2Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 3)">+</button><div id="JLPT3G3Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 4)">+</button><div id="JLPT3G4Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 5 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 5)">+</button><div id="JLPT3G5Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 6 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 6)">+</button><div id="JLPT3G6Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 7 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 7)">+</button><div id="JLPT3G7Tableau" class="JLPTTableau"></div></p>
+                <p>Groupe 8 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 8)">+</button><div id="JLPT3G8Tableau" class="JLPTTableau"></div></p>
+                <button onclick="AfficheTableauKanji()">Retour</button>
+            </div>
+        </div>`;
+
+        LockTableau = true;
+    } else  {
+
+        TableauKanjiElement.innerHTML = "";
+        LockTableau = false;
+    }
+
+
+
+}
+
+function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de la fonction KanjiDansTableau()
 
     
     const Zone = document.getElementById("ZoneTableau");
+
+    let KanjiDisplayed = [];
+
+    AfficheKanjiLock = 1;
     
-    
+    const AfficheTableauJLPT = [document.getElementById("JLPT5G1Tableau"), document.getElementById("JLPT5G2Tableau") ,
+        document.getElementById("JLPT4G1Tableau") , document.getElementById("JLPT4G2Tableau") , document.getElementById("JLPT4G3Tableau") ,
+        document.getElementById("JLPT4G4Tableau") , document.getElementById("JLPT3G1Tableau") , document.getElementById("JLPT3G2Tableau") , 
+        document.getElementById("JLPT3G3Tableau") , document.getElementById("JLPT3G4Tableau") , document.getElementById("JLPT3G5Tableau") , 
+        document.getElementById("JLPT3G6Tableau") , document.getElementById("JLPT3G7Tableau") , document.getElementById("JLPT3G8Tableau")]
 
-    if (AfficheKanjiLock == 0)
-    {
-        AfficheKanjiLock = 1;
-    }
-    else
-    {
-        AfficheKanjiLock = 0;
-    }
+    let MonAffichage = document.getElementById("JLPT5G1Tableau");
+  
+
+    if (JLPT == 5 && Group == 1) {KanjiDisplayed = [0,39]; MonAffichage = AfficheTableauJLPT[0]; if (AfficheKanjiNow[0] == 0) {AfficheKanjiNow[0] = 1; NumJLPT = 1;} else {AfficheKanjiNow[0] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 5 && Group == 2) {KanjiDisplayed = [40, 75]; MonAffichage = AfficheTableauJLPT[1]; if (AfficheKanjiNow[1] == 0) {AfficheKanjiNow[1] = 1; NumJLPT = 1;} else {AfficheKanjiNow[1] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 4 && Group == 1) {KanjiDisplayed = [76, 121]; MonAffichage = AfficheTableauJLPT[2]; if (AfficheKanjiNow[2] == 0) {AfficheKanjiNow[2] = 1; NumJLPT = 1;} else {AfficheKanjiNow[2] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 4 && Group == 2) {KanjiDisplayed = [122, 166]; MonAffichage = AfficheTableauJLPT[3]; if (AfficheKanjiNow[3] == 0) {AfficheKanjiNow[3] = 1; NumJLPT = 1;} else {AfficheKanjiNow[3] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 4 && Group == 3) {KanjiDisplayed = [167, 208]; MonAffichage = AfficheTableauJLPT[4]; if (AfficheKanjiNow[4] == 0) {AfficheKanjiNow[4] = 1; NumJLPT = 1;} else {AfficheKanjiNow[4] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 4 && Group == 4) {KanjiDisplayed = [209, 252]; MonAffichage = AfficheTableauJLPT[5]; if (AfficheKanjiNow[5] == 0) {AfficheKanjiNow[5] = 1; NumJLPT = 1;} else {AfficheKanjiNow[5] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 1) {KanjiDisplayed = [253, 299]; MonAffichage = AfficheTableauJLPT[6]; if (AfficheKanjiNow[6] == 0) {AfficheKanjiNow[6] = 1; NumJLPT = 1;} else {AfficheKanjiNow[6] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 2) {KanjiDisplayed = [300, 345]; MonAffichage = AfficheTableauJLPT[7]; if (AfficheKanjiNow[7] == 0) {AfficheKanjiNow[7] = 1; NumJLPT = 1;} else {AfficheKanjiNow[7] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 3) {KanjiDisplayed = [346, 391]; MonAffichage = AfficheTableauJLPT[8]; if (AfficheKanjiNow[8] == 0) {AfficheKanjiNow[8] = 1; NumJLPT = 1;} else {AfficheKanjiNow[8] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 4) {KanjiDisplayed = [392, 438]; MonAffichage = AfficheTableauJLPT[9]; if (AfficheKanjiNow[9] == 0) {AfficheKanjiNow[9] = 1; NumJLPT = 1;} else {AfficheKanjiNow[9] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 5) {KanjiDisplayed = [449, 484]; MonAffichage = AfficheTableauJLPT[10]; if (AfficheKanjiNow[10] == 0) {AfficheKanjiNow[10] = 1; NumJLPT = 1;} else {AfficheKanjiNow[10] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 6) {KanjiDisplayed = [485, 530]; MonAffichage = AfficheTableauJLPT[11]; if (AfficheKanjiNow[11] == 0) {AfficheKanjiNow[11] = 1; NumJLPT = 1;} else {AfficheKanjiNow[11] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 7) {KanjiDisplayed = [531, 576]; MonAffichage = AfficheTableauJLPT[12]; if (AfficheKanjiNow[12] == 0) {AfficheKanjiNow[12] = 1; NumJLPT = 1;} else {AfficheKanjiNow[12] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 3 && Group == 8) {KanjiDisplayed = [577, 622]; MonAffichage = AfficheTableauJLPT[13]; if (AfficheKanjiNow[13] == 0) {AfficheKanjiNow[13] = 1; NumJLPT = 1;} else {AfficheKanjiNow[13] = 0 ; NumJLPT = 0;};}
 
 
-    if (AfficheKanjiLock == 1) { //Affiche le tableau des kanji en suprimant tous les élements du <body>
+    if (NumJLPT == 1) { //Affiche le tableau des kanji en suprimant tous les élements du <body>
                                  // Si le bouton est préssé pour la première fois
         ContenuBody = document.body.innerHTML;
-        Zone.innerHTML = `    
+        MonAffichage.innerHTML = ` 
         <table class="Tableau_Kanji">
             <tr>
                 <td>Kanji</td>
@@ -1217,22 +1281,23 @@ function AfficheKanji() { // Affiche le tableau de kanji à l'aide de la fonctio
                 <td>Lecture On</td>
                 <td>lecture Kun</td>
             </tr>
-            ${KanjiDansTableau()}
+            ${KanjiDansTableau(KanjiDisplayed)}
 
 
         </table>`;
         
-        let ContenuTableau = Zone.innerHTML; 
+        /*let ContenuTableau = MonAffichage.innerHTML; 
         document.body.innerHTML = `<h1>Kanji Learner</h1>
         <button class="KanjiButton" onclick="AfficheKanji()">Retour au jeu</button>
         <div id="ZoneTableau"></div><Br>` + ContenuTableau; // remplace le contenu du <body> avec le tableau et le titre 
-
+        */
 
     }
     else { // Si le bouton est préssé une deuxième fois
            // Suprime le tableau de kanji et réaffiche tous les élement de la page
-        Zone.innerHTML = "";
-        document.body.innerHTML = ContenuBody;
+           console.log("0");
+        MonAffichage.innerHTML = "";
+      //  document.body.innerHTML = ContenuBody;
     }
 
 
@@ -1603,7 +1668,7 @@ function ToggleLastKanjiBorder(Switch) { // Affiche ou Fait disparaitre la bordu
 }
 
 
-/* Need a rework 
+
 function ResetWallAnimation() {
 
     const ResetWallBoxElement = document.getElementById("ResetWallBox");
@@ -1646,4 +1711,4 @@ function ResetWallAnimation() {
      
     
 }
-    */
+    
