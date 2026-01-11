@@ -704,6 +704,10 @@ let AfficheKanjiNow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let NumJLPT = 0;
 let LockTableau = false; 
 
+let HistoriqueNombreRandom = [];
+
+let RNG = false; 
+
 //-------------------------------------------Fonctions------------------------------------------
 
 // ------------------------------Gestion des réponses-----------------------
@@ -1189,7 +1193,7 @@ function KanjiDansTableau(Kanji) { //  Crée une variable string qui contient to
 
     }
 
-    return CeKanji;
+    return CeKanji; 
 
 }
 
@@ -1572,10 +1576,47 @@ function LastKanji() { // Affiche le kanji qui vient d'être répondu à droite 
 
 }
 
+function RNGToggle() {
+
+    const RNGElement = document.getElementById("RNGButton");
+
+    if (RNG == false) {
+        RNG =true;
+        RNGElement.innerText = "Random"
+    }
+    else {RNG = false; RNGElement.innerText = "Every Kanji";}
+
+}
+
 function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la page)
 
-    NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
 
+    if (RNG == false)
+    {
+        if (HistoriqueNombreRandom == []) {
+
+            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+            HistoriqueNombreRandom.push(NombreRandom);
+        }
+        else if (CompteurPartie <=30 && CompteurPartie > 0)
+        {
+            while (HistoriqueNombreRandom.includes(NombreRandom)) {
+
+                NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+            }
+            HistoriqueNombreRandom.push(NombreRandom);
+        }
+        else {
+            HistoriqueNombreRandom = [];
+            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+            HistoriqueNombreRandom.push(NombreRandom);
+        }
+    }
+    else {
+
+        NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+
+    }
     PremierItem = kanjiDataBase[NombreRandom];
 
     premierKanji = PremierItem.kanji;
