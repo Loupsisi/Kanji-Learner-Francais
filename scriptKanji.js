@@ -667,8 +667,8 @@ let AfficheKanjiLock = 0;
 
 let ContenuBody = "";
 
-let ComboString = localStorage.getItem("ComboSaved")
-let CompteurCombo = parseInt(ComboString);
+let ComboString = localStorage.getItem("ComboSaved");
+let CompteurCombo = (parseInt(ComboString) || 0);
 
 let CompteurPartie = 0;
 
@@ -905,6 +905,7 @@ function MauvaiseReponse() { // Nom
 // -----------------------------Gestion Reset----------------------------
 
 function PartieReset() { // Remet à 0 quasiment tout sauf le Combo Max et le mode sélectionné
+
     ZoneKanjiPrecedant = document.getElementById("KanjiPrecedant");
     HistoriqueVrai = document.getElementById("HistoriqueJuste");
     HistoriqueFaux = document.getElementById("HistoriqueFaux");
@@ -1118,7 +1119,7 @@ function KanjiSelectionApparition() {
 
     const AffichageJLPTElement = document.getElementById("AffichageJLPTConteneur");
 
-    const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor"></p>
+    const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor" onclick="ClearKanjisSelection()"></p>
     <div class="AffichageJLPT">
         <div class="JLPTText">Un carré ≈ 50 kanji</div>
         <div class="JLPTText">JLPT N5 : <button class="JLPTButton" onclick="KanjiSelection(5,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(5, 2) ; KanjiSelectionApparition()">2</button></div>
@@ -1140,6 +1141,15 @@ function KanjiSelectionApparition() {
     }
 
    
+
+}
+
+function ClearKanjisSelection() {
+
+    const AffichageJLPTElement = document.getElementById("AffichageJLPTConteneur");
+
+    AffichageJLPTElement.innerHTML = "";
+    JLPTAfficheTrue = false;
 
 }
 
@@ -1204,28 +1214,34 @@ function AfficheTableauKanji() {
     if (LockTableau == false) {
 
         TableauKanjiElement.innerHTML = `
-        <p id="PageOpacitor" class="PageOpacitor"></p>
+        <p id="PageOpacitor" class="PageOpacitor" onclick="ClearTableauMenu()"></p>
         <div id="ZoneTableau" class="TableauKanjiBox">
             <div class="TableauKanjiBox2">
-                <p>Tableau de kanji</p>
-                <p>--- JLPT N5 ---</p>
-                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 1)">+</button><div id="JLPT5G1Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 2)">+</button><div id="JLPT5G2Tableau" class="JLPTTableau"></div></p>
-                <p>--- JLPT N4 ---</p>
-                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 1)">+</button><div id="JLPT4G1Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 2)">+</button><div id="JLPT4G2Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 3)">+</button><div id="JLPT4G3Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 4)">+</button><div id="JLPT4G4Tableau" class="JLPTTableau"></div></p>
-                <p>--- JLPT N3 ---</p>
-                <p>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 1)">+</button><div id="JLPT3G1Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 2)">+</button><div id="JLPT3G2Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 3)">+</button><div id="JLPT3G3Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 4)">+</button><div id="JLPT3G4Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 5 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 5)">+</button><div id="JLPT3G5Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 6 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 6)">+</button><div id="JLPT3G6Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 7 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 7)">+</button><div id="JLPT3G7Tableau" class="JLPTTableau"></div></p>
-                <p>Groupe 8 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 8)">+</button><div id="JLPT3G8Tableau" class="JLPTTableau"></div></p>
+                <div>--- JLPT N5 ---</div>
+                <div class="JLPT5Section">
+                    <div>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 1)">+</button><div id="JLPT5G1Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 2)">+</button><div id="JLPT5G2Tableau" class="JLPTTableau"></div></div>
+                </div>
+                <div>--- JLPT N4 ---</div>
+                <div class="JLPT4Section">
+                    <div>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 1)">+</button><div id="JLPT4G1Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 2)">+</button><div id="JLPT4G2Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 3)">+</button><div id="JLPT4G3Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(4, 4)">+</button><div id="JLPT4G4Tableau" class="JLPTTableau"></div></div>
+                </div>
+                <div>--- JLPT N3 ---</div>
+                <div class="JLPT3Section">
+                    <div>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 1)">+</button><div id="JLPT3G1Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 2)">+</button><div id="JLPT3G2Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 3)">+</button><div id="JLPT3G3Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 4)">+</button><div id="JLPT3G4Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 5 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 5)">+</button><div id="JLPT3G5Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 6 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 6)">+</button><div id="JLPT3G6Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 7 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 7)">+</button><div id="JLPT3G7Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 8 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 8)">+</button><div id="JLPT3G8Tableau" class="JLPTTableau"></div></div>
+                </div>
                 <button onclick="AfficheTableauKanji()">Retour</button>
+                <div id="JLPTTableauDisplay"  class="JLPTTableauDisplay"></div>
             </div>
         </div>`;
 
@@ -1236,14 +1252,53 @@ function AfficheTableauKanji() {
         LockTableau = false;
     }
 
+    ChangerBoutonTableau();
 
+}
+
+function ChangerBoutonTableau() {
+
+
+    const boutons = document.querySelectorAll('.KanjiTableauBouton');
+
+    boutons.forEach(bouton => {
+        bouton.addEventListener('click', function() {
+      
+            boutons.forEach((b => {b.innerText = "+"}));
+
+          
+            if (this.innerText === "+"){
+                this.innerText = "-";
+            }
+            else {
+                this.innerText = "+";
+            }
+
+        });
+    });
+
+}
+
+function ClearTableauMenu() {
+
+    const TableauKanjiElement = document.getElementById("TableauKanjiConteneur");
+
+    TableauKanjiElement.innerHTML = "";
+    LockTableau = false;
+
+    AfficheKanjiNow.forEach(element => {
+
+        AfficheKanjiNow[(AfficheKanjiNow.indexOf(element))] = 0;
+
+    });
 
 }
 
 function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de la fonction KanjiDansTableau()
 
     
-    const Zone = document.getElementById("ZoneTableau");
+    const Zone = document.getElementById("JLPTTableauDisplay");
+    
 
     let KanjiDisplayed = [];
 
@@ -1273,11 +1328,24 @@ function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de
     else if (JLPT == 3 && Group == 7) {KanjiDisplayed = [531, 576]; MonAffichage = AfficheTableauJLPT[12]; if (AfficheKanjiNow[12] == 0) {AfficheKanjiNow[12] = 1; NumJLPT = 1;} else {AfficheKanjiNow[12] = 0 ; NumJLPT = 0;};}
     else if (JLPT == 3 && Group == 8) {KanjiDisplayed = [577, 622]; MonAffichage = AfficheTableauJLPT[13]; if (AfficheKanjiNow[13] == 0) {AfficheKanjiNow[13] = 1; NumJLPT = 1;} else {AfficheKanjiNow[13] = 0 ; NumJLPT = 0;};}
 
+    AfficheTableauJLPT.forEach(element => {
+
+        if (MonAffichage != element)
+        {
+            
+            element.innerHTML = "";
+            AfficheKanjiNow[(AfficheTableauJLPT.indexOf(element))] = 0;
+        }
+
+    });
+
+    Zone.innerHTML = "";
+
 
     if (NumJLPT == 1) { //Affiche le tableau des kanji en suprimant tous les élements du <body>
                                  // Si le bouton est préssé pour la première fois
         ContenuBody = document.body.innerHTML;
-        MonAffichage.innerHTML = ` 
+        Zone.innerHTML = ` 
         <table class="Tableau_Kanji">
             <tr>
                 <td>Kanji</td>
@@ -1300,7 +1368,7 @@ function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de
     else { // Si le bouton est préssé une deuxième fois
            // Suprime le tableau de kanji et réaffiche tous les élement de la page
            console.log("0");
-        MonAffichage.innerHTML = "";
+            Zone.innerHTML = "";
       //  document.body.innerHTML = ContenuBody;
     }
 
