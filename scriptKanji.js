@@ -662,6 +662,7 @@ let HistoriqueString = "";
 
 let CompteurVrai = 0;
 let CompteurFaux = 0;
+let CompteurKanji = 0; 
 
 let AfficheKanjiLock = 0;
 
@@ -1678,13 +1679,14 @@ function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la pa
 
 
     if (RNG == false)
-    {
+    {   
+        CompteurKanji++;
         if (HistoriqueNombreRandom == []) {
 
             NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
             HistoriqueNombreRandom.push(NombreRandom);
         }
-        else if (CompteurPartie <=30 && CompteurPartie > 0)
+        else if (CompteurKanji <= ((SelectionKanji[1] - SelectionKanji[0])-1) && CompteurKanji > 0)
         {
             while (HistoriqueNombreRandom.includes(NombreRandom)) {
 
@@ -1693,6 +1695,7 @@ function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la pa
             HistoriqueNombreRandom.push(NombreRandom);
         }
         else {
+            CompteurKanji = 0;
             HistoriqueNombreRandom = [];
             NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
             HistoriqueNombreRandom.push(NombreRandom);
