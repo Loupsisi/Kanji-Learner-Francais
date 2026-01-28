@@ -641,7 +641,226 @@ const kanjiDataBase = [
     {kanji: "尊", sens: "vénérer, précieux", On: "Son", kun: "toutoi", hira: "とうとい", kata: "ソン"},
     {kanji: "厚", sens: "épais, gentil", On: "Kou", kun: "atsui", hira: "あつい", kata: "コウ"},
     {kanji: "濃", sens: "concentré, sombre", On: "Nou", kun: "koi", hira: "こい", kata: "ノウ"},
-    {kanji: "薄", sens: "fin, léger", On: "Haku", kun: "usui", hira: "うすい", kata: "ハク"}
+    {kanji: "薄", sens: "fin, léger", On: "Haku", kun: "usui", hira: "うすい", kata: "ハク"},
+    //---------------------Radicaux G1--------------------------
+    {kanji: "一", sens: "un, trait horizontal", On: "Ichi ; Itsu", kun: "hito ; hitotsu", hira: "ひと, ひとつ", kata: "イチ, イツ"},
+    {kanji: "丨", sens: "trait vertical", On: "Kon", kun: "tate", hira: "たて", kata: "コン"},
+    {kanji: "丶", sens: "point", On: "Shu", kun: "ten", hira: "てん", kata: "シュ"},
+    {kanji: "丿", sens: "trait oblique balayé", On: "Heetsu ; He", kun: "no ; harai", hira: "の, はらい", kata: "ヘツ, ヘ"},
+    {kanji: "乙", sens: "le second, deuxième des tiges célestes", On: "Otsu ; Itsu", kun: "kinoto", hira: "きのと", kata: "オツ, イツ"},
+    {kanji: "亅", sens: "trait vertical avec crochet", On: "Ketsu", kun: "hane", hira: "はね", kata: "ケツ"},
+    {kanji: "二", sens: "deux", On: "Ni", kun: "futa ; futatsu", hira: "ふた, ふたつ", kata: "ニ"},
+    {kanji: "亠", sens: "couvercle, haut", On: "Tou", kun: "nabebuta", hira: "なべぶた", kata: "トウ"},
+    {kanji: "人", sens: "personne", On: "Jin ; Nin", kun: "hito", hira: "ひと", kata: "ジン, ニン"},
+    {kanji: "儿", sens: "jambes humaines", On: "Jin ; Nin", kun: "hitoashi", hira: "ひとあし", kata: "ジン, ニン"},
+    {kanji: "入", sens: "entrer", On: "Nyuu", kun: "hairu ; iru", hira: "はいる, いる", kata: "ニュウ"},
+    {kanji: "八", sens: "huit", On: "Hachi", kun: "ya ; yatsu", hira: "や, やつ", kata: "ハチ"},
+    {kanji: "冂", sens: "entourer, bornes", On: "Kei", kun: "makigamae", hira: "まきがまえ", kata: "ケイ"},
+    {kanji: "冖", sens: "couvrir, couronne", On: "Myaku", kun: "wakanmuri", hira: "わかんむり", kata: "ミャク"},
+    {kanji: "冫", sens: "glace", On: "Hyou", kun: "koori", hira: "こおり", kata: "ヒョウ"},
+    {kanji: "几", sens: "table", On: "Ki", kun: "tsukue", hira: "つくえ", kata: "キ"},
+    {kanji: "凵", sens: "récipient, boîte ouverte", On: "Kan", kun: "ukebako", hira: "うけばこ", kata: "カン"},
+    {kanji: "刀", sens: "couteau, épée", On: "Tou", kun: "katana", hira: "かたな", kata: "トウ"},
+    {kanji: "力", sens: "puissance, force", On: "Ryoku ; Riki", kun: "chikara", hira: "ちから", kata: "リョク, リキ"},
+    {kanji: "勹", sens: "envelopper", On: "Hou", kun: "tsutsumu", hira: "つつむ", kata: "ホウ"},
+    {kanji: "匕", sens: "cuillère", On: "Hi", kun: "saji", hira: "さじ", kata: "ヒ"},
+    {kanji: "匚", sens: "boîte", On: "Hou", kun: "hakogamae", hira: "はこがまえ", kata: "ホウ"},
+    {kanji: "匸", sens: "cacher, dissimuler", On: "Kei", kun: "kakushigamae", hira: "かくしがまえ", kata: "ケイ"},
+    {kanji: "十", sens: "dix", On: "Juu", kun: "too ; to", hira: "とお, と", kata: "ジュウ"},
+    {kanji: "卜", sens: "oracle, divination", On: "Boku", kun: "uranau", hira: "うらなう", kata: "ボク"},
+    {kanji: "卩", sens: "sceau, timbre", On: "Setsu", kun: "fushizukuri", hira: "ふしづくり", kata: "セツ"},
+    {kanji: "厂", sens: "falaise", On: "Kan", kun: "gandare", hira: "がんだれ", kata: "カン"},
+    {kanji: "厶", sens: "privé", On: "Shi", kun: "watakushi", hira: "わたくし", kata: "シ"},
+    {kanji: "又", sens: "encore, main droite", On: "Yuu", kun: "mata", hira: "また", kata: "ユウ"},
+    {kanji: "口", sens: "bouche", On: "Kou ; Ku", kun: "kuchi", hira: "くち", kata: "コウ, ク"},
+    {kanji: "囗", sens: "frontière, limites territoriales", On: "I", kun: "kunigamae", hira: "くにがまえ", kata: "イ"},
+    {kanji: "土", sens: "terre", On: "Do ; To", kun: "tsuchi", hira: "つち", kata: "ド, ト"},
+    {kanji: "士", sens: "homme, érudit, samouraï", On: "Shi", kun: "samurai", hira: "さむらい", kata: "シ"},
+    {kanji: "夂", sens: "suivre, aller", On: "Chi", kun: "fuyugashira", hira: "ふゆがしら", kata: "チ"},
+    {kanji: "夊", sens: "aller lentement", On: "Sui", kun: "natsuashi", hira: "なつあし", kata: "スイ"},
+    {kanji: "夕", sens: "soir", On: "Seki", kun: "yuu", hira: "ゆう", kata: "セキ"},
+    {kanji: "大", sens: "grand, gros", On: "Dai ; Tai", kun: "oo ; ookii", hira: "おお, おおきい", kata: "ダイ, タイ"},
+    {kanji: "女", sens: "femme", On: "Jo ; Nyo", kun: "onna", hira: "おんな", kata: "ジョ, ニョ"},
+    {kanji: "子", sens: "enfant, fils", On: "Shi ; Su", kun: "ko", hira: "こ", kata: "シ, ス"},
+    {kanji: "宀", sens: "toit, maison", On: "Ben", kun: "ukanmuri", hira: "うかんむり", kata: "ベン"},
+    {kanji: "寸", sens: "pouce (2,25 cm)", On: "Sun", kun: "", hira: "", kata: "スン"},
+    {kanji: "小", sens: "petit", On: "Shou", kun: "chiisai ; ko", hira: "ちいさい, こ", kata: "ショウ"},
+    {kanji: "尢", sens: "jambe boiteuse", On: "Ou", kun: "dainomageashi", hira: "だいのまげあし", kata: "オウ"},
+    {kanji: "尸", sens: "cadavre, auvent", On: "Shi", kun: "shikabane", hira: "しかばね", kata: "シ"},
+    {kanji: "屮", sens: "pousse", On: "Tetsu", kun: "mebae", hira: "めばえ", kata: "テツ"},
+    {kanji: "山", sens: "montagne", On: "San", kun: "yama", hira: "やま", kata: "サン"},
+    {kanji: "巛", sens: "rivière sinueuse", On: "Sen", kun: "kawa", hira: "かわ", kata: "セン"},
+    {kanji: "工", sens: "travail, charpentier, compétence", On: "Kou ; Ku", kun: "takumi", hira: "たくみ", kata: "コウ, ク"},
+    {kanji: "己", sens: "soi-même", On: "Ko ; Ki", kun: "onore", hira: "おのれ", kata: "コ, キ"},
+    {kanji: "巾", sens: "tissu, serviette", On: "Kin", kun: "haba", hira: "はば", kata: "キン"},
+    {kanji: "干", sens: "sécher, bouclier", On: "Kan", kun: "hosu ; hiiru", hira: "ほす, ひいる", kata: "カン"},
+    {kanji: "幺", sens: "jeune, léger", On: "You", kun: "itogashira", hira: "いとがしら", kata: "ヨウ"},
+    {kanji: "广", sens: "toit en pente", On: "Gen", kun: "madare", hira: "まだれ", kata: "ゲン"},
+    //---------------------Radicaux G2--------------------------
+    {kanji: "廴", sens: "bouger, étirer", On: "In", kun: "ennyou", hira: "えんにょう", kata: "イン"},
+    {kanji: "廾", sens: "mains jointes", On: "Kyou", kun: "nijuuashi", hira: "にじゅうあし", kata: "キョウ"},
+    {kanji: "弋", sens: "javelot", On: "Yoku", kun: "shikigamae", hira: "しきがまえ", kata: "ヨク"},
+    {kanji: "弓", sens: "arc (tir à l'arc)", On: "Kyuu", kun: "yumi", hira: "ゆみ", kata: "キュウ"},
+    {kanji: "彐", sens: "tête de porc", On: "Kei", kun: "keigashira", hira: "けいがしら", kata: "ケイ"},
+    {kanji: "彡", sens: "coiffure, rayons de lumière", On: "San", kun: "sanzukuri", hira: "さんづくり", kata: "サン"},
+    {kanji: "彳", sens: "pas, enjambée, rue, aller", On: "Teki", kun: "gyouninben", hira: "ぎょうにんべん", kata: "テキ"},
+    {kanji: "心", sens: "cœur, esprit", On: "Shin", kun: "kokoro", hira: "こころ", kata: "シン"},
+    {kanji: "戈", sens: "lance, hallebarde", On: "Ka", kun: "hoko", hira: "ほこ", kata: "カ"},
+    {kanji: "戸", sens: "porte", On: "Ko", kun: "to", hira: "と", kata: "コ"},
+    {kanji: "手", sens: "main", On: "Shu", kun: "te", hira: "て", kata: "シュ"},
+    {kanji: "支", sens: "branche", On: "Shi", kun: "sasaeru", hira: "ささえる", kata: "シ"},
+    {kanji: "攴", sens: "frapper, activité", On: "Hoku", kun: "bokuzukuri", hira: "ぼくづくり", kata: "ホク"},
+    {kanji: "文", sens: "littérature, lettres", On: "Bun ; Mon", kun: "fumi", hira: "ふみ", kata: "ブン, モン"},
+    {kanji: "斗", sens: "louche, grande ourse", On: "To", kun: "masu", hira: "ます", kata: "ト"},
+    {kanji: "斤", sens: "hache", On: "Kin", kun: "ono", hira: "おの", kata: "キン"},
+    {kanji: "方", sens: "direction, drapeau", On: "Hou", kun: "kata", hira: "かた", kata: "ホウ"},
+    {kanji: "无", sens: "non, rien", On: "Bu", kun: "nashi", hira: "なし", kata: "ブ"},
+    {kanji: "日", sens: "soleil, jour", On: "Nichi ; Jitsu", kun: "hi", hira: "ひ", kata: "ニチ, ジツ"},
+    {kanji: "曰", sens: "dire", On: "Etsu", kun: "iwaku", hira: "いわく", kata: "エツ"},
+    {kanji: "月", sens: "lune, mois", On: "Getsu ; Gatsu", kun: "tsuki", hira: "つき", kata: "ゲツ, ガツ"},
+    {kanji: "木", sens: "arbre, bois", On: "Moku ; Boku", kun: "ki", hira: "き", kata: "モク, ボク"},
+    {kanji: "欠", sens: "manquer, bâiller", On: "Ketsu", kun: "kaku ; akubi", hira: "かく, あくび", kata: "ケツ"},
+    {kanji: "止", sens: "arrêter", On: "Shi", kun: "tomaru", hira: "とまる", kata: "シ"},
+    {kanji: "歹", sens: "mort, mourir", On: "Gatsu", kun: "shinigamae", hira: "しにがまえ", kata: "ガツ"},
+    {kanji: "殳", sens: "arme, lance", On: "Shu", kun: "rumata", hira: "るまた", kata: "シュ"},
+    {kanji: "毋", sens: "ne pas, mère", On: "Bu", kun: "nakare", hira: "なかれ", kata: "ブ"},
+    {kanji: "比", sens: "comparer", On: "Hi", kun: "kuraberu", hira: "くらべる", kata: "ヒ"},
+    {kanji: "毛", sens: "poil, cheveu", On: "Mou", kun: "ke", hira: "け", kata: "モウ"},
+    {kanji: "氏", sens: "famille, clan", On: "Shi", kun: "uji", hira: "うじ", kata: "シ"},
+    {kanji: "气", sens: "vapeur, air", On: "Ki", kun: "kigamae", hira: "きがまえ", kata: "キ"},
+    {kanji: "水", sens: "eau", On: "Sui", kun: "mizu", hira: "みず", kata: "スイ"},
+    {kanji: "火", sens: "feu", On: "Ka", kun: "hi", hira: "ひ", kata: "カ"},
+    {kanji: "爪", sens: "griffe, ongle", On: "Sou", kun: "tsume", hira: "つめ", kata: "ソウ"},
+    {kanji: "父", sens: "père", On: "Fu", kun: "chichi", hira: "ちち", kata: "フ"},
+    {kanji: "爻", sens: "mélanger, croiser", On: "Kou", kun: "majiwaru", hira: "まじわる", kata: "コウ"},
+    {kanji: "爿", sens: "bois fendu (gauche)", On: "Shou", kun: "shouhen", hira: "しょうへん", kata: "ショウ"},
+    {kanji: "片", sens: "bois fendu (droite), morceau", On: "Hen", kun: "kata", hira: "かた", kata: "ヘン"},
+    {kanji: "牙", sens: "croc, canine", On: "Ga", kun: "kiba", hira: "きば", kata: "ガ"},
+    {kanji: "牛", sens: "vache", On: "Gyuu", kun: "ushi", hira: "うし", kata: "ギュウ"},
+    {kanji: "犬", sens: "chien", On: "Ken", kun: "inu", hira: "いぬ", kata: "ケン"},
+    {kanji: "玄", sens: "mystérieux, profond", On: "Gen", kun: "kuro", hira: "くろ", kata: "ゲン"},
+    {kanji: "玉", sens: "jade, bijou", On: "Gyoku", kun: "tama", hira: "たま", kata: "ギョク"},
+    {kanji: "瓜", sens: "melon", On: "Ka", kun: "uri", hira: "うり", kata: "カ"},
+    {kanji: "瓦", sens: "tuile", On: "Ga", kun: "kawara", hira: "かわら", kata: "ガ"},
+    {kanji: "甘", sens: "doux, sucré", On: "Kan", kun: "amai", hira: "あまい", kata: "カン"},
+    {kanji: "生", sens: "vie, naissance", On: "Sei ; Shou", kun: "ikiru ; umareru", hira: "いきる, うまれる", kata: "セイ, ショウ"},
+    {kanji: "用", sens: "utiliser", On: "You", kun: "mochiiru", hira: "もちいる", kata: "ヨウ"},
+    {kanji: "田", sens: "champ, rizière", On: "Den", kun: "ta", hira: "た", kata: "デン"},
+    {kanji: "疋", sens: "rouleau de tissu", On: "Hiki", kun: "hiki", hira: "ひき", kata: "ヒキ"},
+    {kanji: "疒", sens: "maladie", On: "Da", kun: "yamai", hira: "やまい", kata: "ダ"},
+    {kanji: "癶", sens: "tente, pas", On: "Hatsu", kun: "hatsugashira", hira: "はつがしら", kata: "ハツ"},
+    {kanji: "白", sens: "blanc", On: "Haku", kun: "shiro", hira: "しろ", kata: "ハク"},
+    {kanji: "皮", sens: "peau, cuir", On: "Hi", kun: "kawa", hira: "かわ", kata: "ヒ"},
+    {kanji: "皿", sens: "plat, assiette", On: "Bei", kun: "sara", hira: "さら", kata: "ベイ"},
+    //---------------------Radicaux G3--------------------------
+    {kanji: "目", sens: "œil", On: "Moku", kun: "me", hira: "め", kata: "モク"},
+    {kanji: "矛", sens: "lance, pique", On: "Mu", kun: "hoko", hira: "ほこ", kata: "ム"},
+    {kanji: "矢", sens: "flèche", On: "Shi", kun: "ya", hira: "や", kata: "シ"},
+    {kanji: "石", sens: "pierre", On: "Seki", kun: "ishi", hira: "いし", kata: "セキ"},
+    {kanji: "示", sens: "esprit, montrer, autel", On: "Ji ; Shi", kun: "shimesu", hira: "しめす", kata: "ジ, シ"},
+    {kanji: "禸", sens: "trace, empreinte", On: "Juu", kun: "gu", hira: "ぐ", kata: "ジュウ"},
+    {kanji: "禾", sens: "grain, céréale", On: "Ka", kun: "nogi", hira: "のぎ", kata: "カ"},
+    {kanji: "穴", sens: "trou, caverne", On: "Ketsu", kun: "ana", hira: "あな", kata: "ケツ"},
+    {kanji: "立", sens: "debout, se tenir", On: "Ritsu", kun: "tatsu", hira: "たつ", kata: "リツ"},
+    {kanji: "竹", sens: "bambou", On: "Chiku", kun: "take", hira: "たけ", kata: "チク"},
+    {kanji: "米", sens: "riz", On: "Bei ; Mai", kun: "kome", hira: "こめ", kata: "ベイ, マイ"},
+    {kanji: "糸", sens: "fil, soie", On: "Shi", kun: "ito", hira: "いと", kata: "シ"},
+    {kanji: "缶", sens: "jarre, pot", On: "Kan", kun: "kama", hira: "かま", kata: "カン"},
+    {kanji: "网", sens: "filet", On: "Mou", kun: "ami", hira: "あみ", kata: "モウ"},
+    {kanji: "羊", sens: "mouton", On: "You", kun: "hitsuji", hira: "ひつじ", kata: "ヨウ"},
+    {kanji: "羽", sens: "plume, aile", On: "U", kun: "hane", hira: "はね", kata: "ウ"},
+    {kanji: "老", sens: "vieux", On: "Rou", kun: "oi", hira: "おい", kata: "ロウ"},
+    {kanji: "而", sens: "et, mais", On: "Ji", kun: "shikashite", hira: "しかして", kata: "ジ"},
+    {kanji: "耒", sens: "charrue", On: "Rai", kun: "suki", hira: "すき", kata: "ライ"},
+    {kanji: "耳", sens: "oreille", On: "Ji", kun: "mimi", hira: "みみ", kata: "ジ"},
+    {kanji: "聿", sens: "pinceau", On: "Itsu", kun: "fude", hira: "ふで", kata: "イツ"},
+    {kanji: "肉", sens: "viande", On: "Niku", kun: "shishi", hira: "しし", kata: "ニク"},
+    {kanji: "臣", sens: "ministre, serviteur", On: "Shin", kun: "omi", hira: "おみ", kata: "シン"},
+    {kanji: "自", sens: "soi-même", On: "Ji ; Shi", kun: "mizukara", hira: "みずから", kata: "ジ, シ"},
+    {kanji: "至", sens: "arriver, atteindre", On: "Shi", kun: "itaru", hira: "いたる", kata: "シ"},
+    {kanji: "臼", sens: "mortier", On: "Kyuu", kun: "usu", hira: "うす", kata: "キュウ"},
+    {kanji: "舌", sens: "langue", On: "Zetsu", kun: "shita", hira: "した", kata: "ゼツ"},
+    {kanji: "舛", sens: "opposé, erreur", On: "Sen", kun: "somuku", hira: "そむく", kata: "セン"},
+    {kanji: "舟", sens: "bateau", On: "Shu", kun: "fune", hira: "ふね", kata: "シュ"},
+    {kanji: "艮", sens: "s'arrêter, limite", On: "Kon", kun: "ushitora", hira: "うしとら", kata: "コン"},
+    {kanji: "色", sens: "couleur", On: "Shoku", kun: "iro", hira: "いろ", kata: "ショク"},
+    {kanji: "艸", sens: "herbe, plante", On: "Sou", kun: "kusa", hira: "くさ", kata: "ソウ"},
+    {kanji: "虍", sens: "tigre", On: "Ko", kun: "tora", hira: "とら", kata: "コ"},
+    {kanji: "虫", sens: "insecte, ver", On: "Chuu", kun: "mushi", hira: "むし", kata: "チュウ"},
+    {kanji: "血", sens: "sang", On: "Ketsu", kun: "chi", hira: "ち", kata: "ケツ"},
+    {kanji: "行", sens: "aller, ligne", On: "Kou ; Gyou", kun: "iku", hira: "いく", kata: "コウ, ギョウ"},
+    {kanji: "衣", sens: "vêtement", On: "I", kun: "koromo", hira: "ころも", kata: "イ"},
+    {kanji: "襾", sens: "couvrir, ouest", On: "A", kun: "nishi", hira: "にし", kata: "ア"},
+    {kanji: "見", sens: "voir", On: "Ken", kun: "miru", hira: "みる", kata: "ケン"},
+    {kanji: "角", sens: "corne, angle", On: "Kaku", kun: "tsuno", hira: "つの", kata: "カク"},
+    {kanji: "言", sens: "dire, parole", On: "Gen ; Gon", kun: "koto ; iu", hira: "こと, いう", kata: "ゲン, ゴン"},
+    {kanji: "谷", sens: "vallée", On: "Koku", kun: "tani", hira: "たに", kata: "コク"},
+    {kanji: "豆", sens: "haricot, fève", On: "Tou", kun: "mame", hira: "まめ", kata: "トウ"},
+    {kanji: "豕", sens: "cochon", On: "Shi", kun: "inoko", hira: "いのこ", kata: "シ"},
+    {kanji: "豸", sens: "blaireau, animal rampant", On: "Chi", kun: "mujina", hira: "むじな", kata: "チ"},
+    {kanji: "貝", sens: "coquillage", On: "Bai", kun: "kai", hira: "かい", kata: "バイ"},
+    {kanji: "赤", sens: "rouge", On: "Seki", kun: "aka", hira: "あか", kata: "セキ"},
+    {kanji: "走", sens: "courir", On: "Sou", kun: "hashiru", hira: "はしる", kata: "ソウ"},
+    {kanji: "足", sens: "pied", On: "Soku", kun: "ashi", hira: "あし", kata: "ソク"},
+    {kanji: "身", sens: "corps", On: "Shin", kun: "mi", hira: "み", kata: "シン"},
+    {kanji: "車", sens: "voiture, charrette", On: "Sha", kun: "kuruma", hira: "くるま", kata: "シャ"},
+    {kanji: "辛", sens: "épicé, amer", On: "Shin", kun: "karai", hira: "からい", kata: "シン"},
+    {kanji: "辰", sens: "matin, dragon", On: "Shin", kun: "tatsu", hira: "たつ", kata: "シン"},
+    {kanji: "辵", sens: "marcher, avancer", On: "Chaku", kun: "shinnyou", hira: "しんにょう", kata: "チャク"},
+    {kanji: "邑", sens: "village, ville", On: "Yuu", kun: "mura", hira: "むら", kata: "ユウ"},
+    //---------------------Radicaux G4--------------------------
+    {kanji: "酉", sens: "vin, saké, oiseau", On: "Yuu", kun: "tori", hira: "とり", kata: "ユウ"},
+    {kanji: "釆", sens: "distinguer, séparer", On: "Ben", kun: "nogome", hira: "のごめ", kata: "ベン"},
+    {kanji: "里", sens: "village, lieue", On: "Ri", kun: "sato", hira: "さと", kata: "リ"},
+    {kanji: "金", sens: "or, métal", On: "Kin", kun: "kane", hira: "かね", kata: "キン"},
+    {kanji: "長", sens: "long", On: "Chou", kun: "nagai", hira: "ながい", kata: "チョウ"},
+    {kanji: "門", sens: "porte", On: "Mon", kun: "kado", hira: "かど", kata: "モン"},
+    {kanji: "阜", sens: "monticule, butte", On: "Fu", kun: "oka", hira: "おか", kata: "フ"},
+    {kanji: "隶", sens: "esclave", On: "Rei", kun: "shimobe", hira: "しもべ", kata: "レイ"},
+    {kanji: "隹", sens: "vieil oiseau", On: "Sui", kun: "furutori", hira: "ふるとり", kata: "スイ"},
+    {kanji: "雨", sens: "pluie", On: "U", kun: "ame", hira: "あめ", kata: "ウ"},
+    {kanji: "青", sens: "bleu, vert", On: "Sei", kun: "ao", hira: "あお", kata: "セイ"},
+    {kanji: "非", sens: "faux, erreur", On: "Hi", kun: "arazu", hira: "あらず", kata: "ヒ"},
+    {kanji: "面", sens: "visage, face", On: "Men", kun: "omo", hira: "おも", kata: "メン"},
+    {kanji: "革", sens: "cuir, peau", On: "Kaku", kun: "kawa", hira: "かわ", kata: "カク"},
+    {kanji: "韋", sens: "cuir tanné", On: "I", kun: "namegawa", hira: "なめがわ", kata: "イ"},
+    {kanji: "韭", sens: "poireau", On: "Kyuu", kun: "nira", hira: "にら", kata: "キュウ"},
+    {kanji: "音", sens: "son", On: "On", kun: "oto", hira: "おと", kata: "オン"},
+    {kanji: "頁", sens: "page, tête", On: "Ketsu", kun: "oogai", hira: "おおがい", kata: "ケツ"},
+    {kanji: "風", sens: "vent", On: "Fuu", kun: "kaze", hira: "かぜ", kata: "フウ"},
+    {kanji: "飛", sens: "voler", On: "Hi", kun: "tobu", hira: "とぶ", kata: "ヒ"},
+    {kanji: "食", sens: "manger, nourriture", On: "Shoku", kun: "taberu", hira: "たべる", kata: "ショク"},
+    {kanji: "首", sens: "tête, cou", On: "Shu", kun: "kubi", hira: "くび", kata: "シュ"},
+    {kanji: "香", sens: "parfum, encens", On: "Kou", kun: "kaori", hira: "かおり", kata: "コウ"},
+    {kanji: "馬", sens: "cheval", On: "Ba", kun: "uma", hira: "うま", kata: "バ"},
+    {kanji: "骨", sens: "os", On: "Kotsu", kun: "hone", hira: "ほね", kata: "コツ"},
+    {kanji: "高", sens: "haut, élevé", On: "Kou", kun: "takai", hira: "たかい", kata: "コウ"},
+    {kanji: "髟", sens: "cheveux longs", On: "Hyou", kun: "kamigashira", hira: "かみがしら", kata: "ヒョウ"},
+    {kanji: "鬥", sens: "combat, lutte", On: "Tou", kun: "tatakau", hira: "たたかう", kata: "トウ"},
+    {kanji: "鬯", sens: "vin sacrificiel, herbes", On: "Chou", kun: "nioizake", hira: "においざけ", kata: "チョウ"},
+    {kanji: "鬲", sens: "chaudron, trépied", On: "Reki", kun: "kanae", hira: "かなえ", kata: "レキ"},
+    {kanji: "鬼", sens: "fantôme, démon", On: "Ki", kun: "oni", hira: "おに", kata: "キ"},
+    {kanji: "魚", sens: "poisson", On: "Gyo", kun: "sakana", hira: "さかな", kata: "ギョ"},
+    {kanji: "鳥", sens: "oiseau", On: "Chou", kun: "tori", hira: "とり", kata: "チョウ"},
+    {kanji: "鹵", sens: "sel", On: "Ro", kun: "shio", hira: "しお", kata: "ロ"},
+    {kanji: "鹿", sens: "cerf", On: "Roku", kun: "shika", hira: "しか", kata: "ロク"},
+    {kanji: "麥", sens: "blé", On: "Baku", kun: "mugi", hira: "むぎ", kata: "バク"},
+    {kanji: "麻", sens: "chanvre", On: "Ma", kun: "asa", hira: "あさ", kata: "マ"},
+    {kanji: "黄", sens: "jaune", On: "Kou", kun: "ki", hira: "き", kata: "コウ"},
+    {kanji: "黍", sens: "millet", On: "Sho", kun: "kibi", hira: "きび", kata: "ショ"},
+    {kanji: "黒", sens: "noir", On: "Koku", kun: "kuro", hira: "くろ", kata: "コク"},
+    {kanji: "黹", sens: "broderie", On: "Chi", kun: "nui", hira: "ぬい", kata: "チ"},
+    {kanji: "黽", sens: "grenouille, amphibien", On: "Bou", kun: "aogaeru", hira: "あおがえる", kata: "ボウ"},
+    {kanji: "鼎", sens: "trépied", On: "Tei", kun: "kanae", hira: "かなえ", kata: "テイ"},
+    {kanji: "鼓", sens: "tambour", On: "Ko", kun: "tsuzumi", hira: "つづみ", kata: "コ"},
+    {kanji: "鼠", sens: "rat, souris", On: "So", kun: "nezumi", hira: "ねずみ", kata: "ソ"},
+    {kanji: "鼻", sens: "nez", On: "Bi", kun: "hana", hira: "はな", kata: "ビ"},
+    {kanji: "齊", sens: "égal, uniforme", On: "Sei", kun: "hitoshii", hira: "ひとしい", kata: "セイ"},
+    {kanji: "歯", sens: "dent", On: "Shi", kun: "ha", hira: "は", kata: "シ"},
+    {kanji: "龍", sens: "dragon", On: "Ryuu", kun: "tatsu", hira: "たつ", kata: "リュウ"},
+    {kanji: "龜", sens: "tortue", On: "Ki", kun: "kame", hira: "かめ", kata: "キ"},
+    {kanji: "龠", sens: "flûte", On: "Yaku", kun: "fue", hira: "ふえ", kata: "ヤク"}
+    
 ];
 
 //------------------Variables------------------
@@ -701,7 +920,7 @@ let GroupSelect = parseInt(GroupSelectString) || 1;
 let SelectionKanji = JSON.parse(localStorage.getItem("SelectionSaved")) || [0,39];
 let JLPTAfficheTrue = false;
 
-let AfficheKanjiNow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let AfficheKanjiNow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let NumJLPT = 0;
 let LockTableau = false; 
 
@@ -1144,6 +1363,7 @@ function KanjiSelectionApparition() {
         <div class="JLPTText">JLPT N5 : <button class="JLPTButton" onclick="KanjiSelection(5,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(5, 2) ; KanjiSelectionApparition()">2</button></div>
         <div class="JLPTText">JLPT N4 : <button class="JLPTButton" onclick="KanjiSelection(4,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(4, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(4, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(4, 4) ; KanjiSelectionApparition()">4</button></div>
         <div class="JLPTText">JLPT N3 : <button class="JLPTButton" onclick="KanjiSelection(3,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(3, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(3, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(3, 4) ; KanjiSelectionApparition()">4</button><button class="JLPTButton" onclick="KanjiSelection(3, 5) ; KanjiSelectionApparition()">5</button><button class="JLPTButton" onclick="KanjiSelection(3, 6) ; KanjiSelectionApparition()">6</button><button class="JLPTButton" onclick="KanjiSelection(3, 7) ; KanjiSelectionApparition()">7</button><button class="JLPTButton" onclick="KanjiSelection(3, 8) ; KanjiSelectionApparition()">8</button></div>
+        <div class="JLPTText">Radicaux : <button class="JLPTButton" onclick="KanjiSelection(0,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(0, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(0, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(0, 4) ; KanjiSelectionApparition()">4</button></div>
         <button class="JLPTRetour" onclick="KanjiSelectionApparition()">Retour</button>
     </div>`;
 
@@ -1181,10 +1401,10 @@ function KanjiSelection(JLPT, Group) {
     GroupSelect = Group;
 
     if (JLPT == 5 && Group == 1) {SelectionKanji = [0,39];}
-    if (JLPT == 5 && Group == 2) {SelectionKanji = [40, 75];}
-    if (JLPT == 4 && Group == 1) {SelectionKanji = [76, 121];}
-    if (JLPT == 4 && Group == 2) {SelectionKanji = [122, 166];}
-    if (JLPT == 4 && Group == 3) {SelectionKanji = [167, 208];}
+    else if (JLPT == 5 && Group == 2) {SelectionKanji = [40, 75];}
+    else if (JLPT == 4 && Group == 1) {SelectionKanji = [76, 121];}
+    else if (JLPT == 4 && Group == 2) {SelectionKanji = [122, 166];}
+    else if (JLPT == 4 && Group == 3) {SelectionKanji = [167, 208];}
     else if (JLPT == 4 && Group == 4) {SelectionKanji = [209, 252];}
     else if (JLPT == 3 && Group == 1) {SelectionKanji = [253, 299];}
     else if (JLPT == 3 && Group == 2) {SelectionKanji = [300, 345];}
@@ -1194,6 +1414,13 @@ function KanjiSelection(JLPT, Group) {
     else if (JLPT == 3 && Group == 6) {SelectionKanji = [485, 530];}
     else if (JLPT == 3 && Group == 7) {SelectionKanji = [531, 576];}
     else if (JLPT == 3 && Group == 8) {SelectionKanji = [577, 622];}
+
+    else if (JLPT == 0 && Group == 1) {SelectionKanji = [623,677];}
+    else if (JLPT == 0 && Group == 2) {SelectionKanji = [678, 732];}
+    else if (JLPT == 0 && Group == 3) {SelectionKanji = [733, 787];}
+    else if (JLPT == 0 && Group == 4) {SelectionKanji = [788, 836];}
+
+    
 
     localStorage.setItem("SelectionSaved", JSON.stringify(SelectionKanji));
     localStorage.setItem("JLPTSaved", JLPT);
@@ -1258,6 +1485,13 @@ function AfficheTableauKanji() {
                     <div>Groupe 6 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 6)">+</button><div id="JLPT3G6Tableau" class="JLPTTableau"></div></div>
                     <div>Groupe 7 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 7)">+</button><div id="JLPT3G7Tableau" class="JLPTTableau"></div></div>
                     <div>Groupe 8 <button class="KanjiTableauBouton" onclick="AfficheKanji(3, 8)">+</button><div id="JLPT3G8Tableau" class="JLPTTableau"></div></div>
+                </div>
+                <div>--- Radicaux ---</div>
+                <div class="JLPT3Section">
+                    <div>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(0, 1)">+</button><div id="JLPT3G1Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 2 <button class="KanjiTableauBouton" onclick="AfficheKanji(0, 2)">+</button><div id="JLPT3G2Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 3 <button class="KanjiTableauBouton" onclick="AfficheKanji(0, 3)">+</button><div id="JLPT3G3Tableau" class="JLPTTableau"></div></div>
+                    <div>Groupe 4 <button class="KanjiTableauBouton" onclick="AfficheKanji(0, 4)">+</button><div id="JLPT3G4Tableau" class="JLPTTableau"></div></div>
                 </div>
                 <button onclick="AfficheTableauKanji()">Retour</button>
                 <div id="JLPTTableauDisplay"  class="JLPTTableauDisplay"></div>
@@ -1346,6 +1580,11 @@ function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de
     else if (JLPT == 3 && Group == 6) {KanjiDisplayed = [485, 530]; MonAffichage = AfficheTableauJLPT[11]; if (AfficheKanjiNow[11] == 0) {AfficheKanjiNow[11] = 1; NumJLPT = 1;} else {AfficheKanjiNow[11] = 0 ; NumJLPT = 0;};}
     else if (JLPT == 3 && Group == 7) {KanjiDisplayed = [531, 576]; MonAffichage = AfficheTableauJLPT[12]; if (AfficheKanjiNow[12] == 0) {AfficheKanjiNow[12] = 1; NumJLPT = 1;} else {AfficheKanjiNow[12] = 0 ; NumJLPT = 0;};}
     else if (JLPT == 3 && Group == 8) {KanjiDisplayed = [577, 622]; MonAffichage = AfficheTableauJLPT[13]; if (AfficheKanjiNow[13] == 0) {AfficheKanjiNow[13] = 1; NumJLPT = 1;} else {AfficheKanjiNow[13] = 0 ; NumJLPT = 0;};}
+
+    else if (JLPT == 0 && Group == 1) {KanjiDisplayed = [623, 677]; MonAffichage = AfficheTableauJLPT[2]; if (AfficheKanjiNow[14] == 0) {AfficheKanjiNow[14] = 1; NumJLPT = 1;} else {AfficheKanjiNow[2] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 0 && Group == 2) {KanjiDisplayed = [678, 732]; MonAffichage = AfficheTableauJLPT[3]; if (AfficheKanjiNow[15] == 0) {AfficheKanjiNow[15] = 1; NumJLPT = 1;} else {AfficheKanjiNow[3] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 0 && Group == 3) {KanjiDisplayed = [733, 787]; MonAffichage = AfficheTableauJLPT[4]; if (AfficheKanjiNow[16] == 0) {AfficheKanjiNow[16] = 1; NumJLPT = 1;} else {AfficheKanjiNow[4] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 0 && Group == 4) {KanjiDisplayed = [788, 836]; MonAffichage = AfficheTableauJLPT[5]; if (AfficheKanjiNow[17] == 0) {AfficheKanjiNow[17] = 1; NumJLPT = 1;} else {AfficheKanjiNow[5] = 0 ; NumJLPT = 0;};}
 
     AfficheTableauJLPT.forEach(element => {
 
@@ -1676,8 +1915,8 @@ function RNGToggle() {
 }
 
 function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la page)
-
-
+    
+    console.log(kanjiDataBase.length);
     if (RNG == false)
     {   
         CompteurKanji++;
