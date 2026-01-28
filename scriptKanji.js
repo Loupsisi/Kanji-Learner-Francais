@@ -1140,7 +1140,7 @@ function PartieReset() { // Remet à 0 quasiment tout sauf le Combo Max et le mo
     <div id="HistoriqueJuste" class="HistoriqueVrai"></div>
     <div id="HistoriqueFaux" class="HistoriqueFaux"></div>
     `;
-
+    CompteurKanji = 0;
     ZoneKanjiPrecedant = document.getElementById("KanjiPrecedant");
 
     HistoriqueVrai = document.getElementById("HistoriqueJuste");
