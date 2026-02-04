@@ -934,15 +934,30 @@ let RNG = false;
 
 function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec la réponse attendue
 
-
-
     Item = kanjiDataBase[NombreRandom];
 
-    const Sens = Item.sens.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(","); // Crée les réponses à comparé avec l'utilisateur
-    const On = Item.On.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
-    const Kun = Item.kun.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
-    const Hira = Item.hira.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
-    const Kata = Item.kata.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+    const ItemSens = Item.sens; 
+    const ItemOn = Item.On; 
+    const ItemKun = Item.kun; 
+    const ItemHira = Item.hira; 
+    const ItemKata = Item.kata; 
+
+    let Sens = [];
+    let On = [];
+    let Kun = [];
+    let Hira = [];
+    let Kata = [];
+
+
+
+
+    On = Item.On.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(";"); // Crée les réponses à comparé avec l'utilisateur
+    Kun = Item.kun.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(";"); // Crée les réponses à comparé avec l'utilisateur
+    Sens = Item.sens.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(","); // Crée les réponses à comparé avec l'utilisateur
+    Hira = Item.hira.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(","); // Crée les réponses à comparé avec l'utilisateur
+    Kata = Item.kata.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(","); // Crée les réponses à comparé avec l'utilisateur
+
+
 
 
     let SensCorrect = Sens.some(possibilite => { // Compartitionne les réponses
@@ -1141,6 +1156,7 @@ function PartieReset() { // Remet à 0 quasiment tout sauf le Combo Max et le mo
     <div id="HistoriqueFaux" class="HistoriqueFaux"></div>
     `;
     CompteurKanji = 0;
+    HistoriqueNombreRandom = [];
     ZoneKanjiPrecedant = document.getElementById("KanjiPrecedant");
 
     HistoriqueVrai = document.getElementById("HistoriqueJuste");
@@ -1915,8 +1931,10 @@ function RNGToggle() {
 }
 
 function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la page)
+
+    console.log((SelectionKanji[1] - SelectionKanji[0])-1);
+    console.log(CompteurKanji+1);
     
-    console.log(kanjiDataBase.length);
     if (RNG == false)
     {   
         CompteurKanji++;
