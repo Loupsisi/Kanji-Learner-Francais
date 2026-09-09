@@ -9,3 +9,5 @@ It is my first HTML project so it might be mid :/.
 - You don't have to put accents to get it right
 - You can choose your JLPT level by clicking on the "Niveau" Button
 - You can add length to the game by pressing your current score "0/30" 
+
+Website address: https://loupsisi.github.io/Kanji-Learner-Francais/
