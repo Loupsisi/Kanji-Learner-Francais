@@ -2930,8 +2930,10 @@ const TextJLPTElement = document.getElementById("TextJLPTSelected");
     let Niveau = "N"+JLPT+"G"+Group;
     if (JLPT == 0 && Group == 0) {
          KanjiStat.forEach(element => {
-
-        KanjiRevisionList.push(element.number);
+            if (element.win <= element.fail)
+            {
+                KanjiRevisionList.push(element.number);
+            }
         
     });
     
@@ -2939,7 +2941,13 @@ const TextJLPTElement = document.getElementById("TextJLPTSelected");
     {
         KanjiStat.forEach(element => {
 
-            if (element.niveau == Niveau) {KanjiRevisionList.push(element.number);}
+            if (element.niveau == Niveau) 
+                {
+                    if (element.win <= element.fail)
+                    {
+                        KanjiRevisionList.push(element.number);
+                    }
+                }
             
         });
     }
@@ -2949,7 +2957,7 @@ const TextJLPTElement = document.getElementById("TextJLPTSelected");
         const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor" onclick="ClearKanjisSelection()"></p>
         <div class="AffichageJLPTRevision">
         <div class="JLPTText">Un carré ≈ 50 kanji (N1 ≈  100) Mode révisions</div>
-        <div class="JLPTText">Tout les ratés : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(0 ,0)">0</button></div>
+        <div class="JLPTText">Tout les ratés : <button class="JLPTButtonRevision ; vert" data-level="5" data-index="1" onclick="KanjiRevisionSelection(0 ,0)">0</button></div>
         <div class="JLPTText">JLPT N5 : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(5,1)">1</button><button class="JLPTButtonRevision" data-level="5" data-index="2" onclick="KanjiRevisionSelection(5, 2)">2</button></div>
         <div class="JLPTText">JLPT N4 : <button class="JLPTButtonRevision" data-level="4" data-index="1" onclick="KanjiRevisionSelection(4,1)">1</button><button class="JLPTButtonRevision" data-level="4" data-index="2" onclick="KanjiRevisionSelection(4, 2)">2</button><button class="JLPTButtonRevision" data-level="4" data-index="3" onclick="KanjiRevisionSelection(4, 3)">3</button><button class="JLPTButtonRevision" data-level="4" data-index="4" onclick="KanjiRevisionSelection(4, 4)">4</button></div>
         <div class="JLPTText">JLPT N3 : <button class="JLPTButtonRevision" data-level="3" data-index="1" onclick="KanjiRevisionSelection(3,1)">1</button><button class="JLPTButtonRevision" data-level="3" data-index="2" onclick="KanjiRevisionSelection(3, 2)">2</button><button class="JLPTButtonRevision" data-level="3" data-index="3" onclick="KanjiRevisionSelection(3, 3)">3</button><button class="JLPTButtonRevision" data-level="3" data-index="4" onclick="KanjiRevisionSelection(3, 4)">4</button><button class="JLPTButtonRevision" data-level="3" data-index="5" onclick="KanjiRevisionSelection(3, 5)">5</button><button class="JLPTButtonRevision" data-level="3" data-index="6" onclick="KanjiRevisionSelection(3, 6)">6</button><button class="JLPTButtonRevision" data-level="3" data-index="7" onclick="KanjiRevisionSelection(3, 7)">7</button><button class="JLPTButtonRevision" data-level="3" data-index="8" onclick="KanjiRevisionSelection(3, 8)">8</button></div>
@@ -2986,13 +2994,14 @@ function ButtonColor() {
     boutons.forEach(element => {
         element.classList.remove('vert', 'rouge');
         const niveau = element.getAttribute('data-level');
-        const index = element.getAttribute('data-index');
+        const index = element.getAttribute('data-index')
 
-        if ( KanjiStat.some(kanji => kanji.niveau === `N${niveau}G${index}`))  
-            {
-                element.classList.add('vert');
-            }
-        else {element.classList.add('rouge');}
+            if ( KanjiStat.some(kanji => kanji.niveau === `N${niveau}G${index}` && kanji.win <= kanji.fail))  
+                {
+                    element.classList.add('vert');
+                }
+            else {element.classList.add('rouge');}
+
         
    });
 
