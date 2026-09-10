@@ -2254,6 +2254,55 @@ let HistoriqueVrai = document.getElementById("HistoriqueJuste");
 let HistoriqueFaux = document.getElementById("HistoriqueFaux");
 let HistoriqueString = "";
 
+let KanjiStat = JSON.parse(localStorage.getItem('KanjiStatData')) || [
+    {niveau: "N5G1", kanji: "一", fail: 1, win: 0, number: 0}
+];
+let NiveauJLPT = [
+// ------------- -JLPT N1 ----------
+    {niveau: "N1G1", place: [992, 1084]},
+    {niveau: "N1G2", place: [1085, 1177]},
+    {niveau: "N1G3", place: [1178, 1270]},
+    {niveau: "N1G4", place: [1271, 1363]},
+    {niveau: "N1G5", place: [1364, 1456]},
+    {niveau: "N1G6", place: [1457, 1549]},
+    {niveau: "N1G7", place: [1550, 1642]},
+    {niveau: "N1G8", place: [1643, 1735]},
+    {niveau: "N1G9", place: [1736, 1828]},
+    {niveau: "N1G10", place: [1829, 1921]},
+    {niveau: "N1G11", place: [1922, 2014]},
+    {niveau: "N1G12", place: [2015, 2107]},
+    {niveau: "N1G13", place: [2108, 2196]},
+//---------- JLPT N2 ---------
+    {niveau: "N2G1", place: [623, 668]},
+    {niveau: "N2G2", place: [669, 714]},
+    {niveau: "N2G3", place: [715, 760]},
+    {niveau: "N2G4", place: [761, 806]},
+    {niveau: "N2G5", place: [807, 852]},
+    {niveau: "N2G6", place: [853, 898]},
+    {niveau: "N2G7", place: [899, 944]},
+    {niveau: "N2G8", place: [945, 991]},
+// ------- JLPT N3v --------
+    {niveau: "N3G1", place: [253, 299]},
+    {niveau: "N3G2", place: [300, 345]},
+    {niveau: "N3G3", place: [346, 391]},
+    {niveau: "N3G4", place: [392, 438]},
+    {niveau: "N3G5", place: [439, 484]},
+    {niveau: "N3G6", place: [485, 530]},
+    {niveau: "N3G7", place: [531, 576]},
+    {niveau: "N3G8", place: [577, 622]},
+// -------- JLPT N4 --------
+    {niveau: "N4G1", place: [76, 121]},
+    {niveau: "N4G2", place: [122, 166]},
+    {niveau: "N4G3", place: [167, 208]},
+    {niveau: "N4G4", place: [209, 252]},
+    //-------- JLPT N5 -----
+    {niveau: "N5G1", place: [0, 39]},
+    {niveau: "N5G2", place: [40, 75]}
+
+];
+
+let KanjiRevisionList = [];
+
 let CompteurVrai = 0;
 let CompteurFaux = 0;
 let CompteurKanji = 0; 
@@ -2294,6 +2343,7 @@ let GroupSelect = parseInt(GroupSelectString) || 1;
 
 let SelectionKanji = JSON.parse(localStorage.getItem("SelectionSaved")) || [0,39];
 let JLPTAfficheTrue = false;
+let JLPTRevisionAfficheTrue = false;
 
 let AfficheKanjiNow = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let NumJLPT = 0;
@@ -2322,6 +2372,8 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
     let Kun = [];
     let Hira = [];
     let Kata = [];
+
+
 
 
 
@@ -2367,6 +2419,7 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
     if (ReponseType == 1) { // Si le mode est Signification, regarde si la réponse est juste
          if (SensCorrect) {
             LastKanji(); // Affiche le kanji qui vient d'être répondu à droite 
+            HistoriqueStat(1);
             BonneReponse(); // Affiche le message de bonne réponse 
             HistoriqueReponses(1); // Affiche le kanji dans l'historique des bonnes réposnes
             ComboMeter(1); // Met à jour le combo
@@ -2375,7 +2428,6 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
             AffichageKanji(); // Affiche un nouveau Kanji 
             WipeInput(); // enlève la réponse de l'utilisateur
             BackgroundAnimation(1);
-            AnswerColor(1);
         }
         else { // Sinon affiche message de mauvaise réposne (si Entrer est appuyé)
         if (EnterPressed == 1){
@@ -2387,6 +2439,7 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
 
         if (OnCorrect || OnCorrectKata) {
             LastKanji();
+            HistoriqueStat(1);
             BonneReponse();
             HistoriqueReponses(1);
             ComboMeter(1);
@@ -2395,7 +2448,6 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
             AffichageKanji();
             WipeInput();
             BackgroundAnimation(1);
-            AnswerColor(1);
         }
         else {
         if (EnterPressed == 1){
@@ -2408,6 +2460,7 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
 
           if (KunCorrect || KunCorrectHira) {
             LastKanji();
+            HistoriqueStat(1);
             BonneReponse();
             HistoriqueReponses(1);
             ComboMeter(1);
@@ -2416,7 +2469,6 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
             AffichageKanji();
             WipeInput();
             BackgroundAnimation(1);
-            AnswerColor(1);
         }
         else {
         if (EnterPressed == 1){
@@ -2432,6 +2484,7 @@ function getValue(EnterPressed) { // Compare la réponse de l'utilisateur avec l
 function Skip() { // Skip le kanji actuel 
 
     LastKanji(); // affiche le kanji à gauche
+    HistoriqueStat(0);
     HistoriqueReponses(0); // Affiche le kanji dans l'historique des skips (rouge)
     ComboMeter(0); // met à 0 le combo 
     PartieMeter(0); // met à jour l'affichage de la partie 
@@ -2741,6 +2794,53 @@ function AfficherHistorique() { // Affiche l'historique à la fin de la partie
 
 }
 
+function HistoriqueStat(result) {
+
+    let failed = 0;
+    let won = 0;
+    let exist = 0;
+    let number = 0;
+
+    let KanjiActuel = kanjiDataBase[NombreRandom].kanji;
+    let KanjiIndex = 0;
+
+    if (result == 0) { failed = 1} else { won = 1}
+
+    KanjiStat.forEach(element => {
+        number++;
+        if (element.kanji == kanjiDataBase[NombreRandom].kanji) {
+            exist = 1;
+            KanjiIndex = number-1;
+        } 
+
+    });
+
+    if (exist == 0) {
+
+        NiveauJLPT.forEach(element => {
+
+            if (NombreRandom >= element.place[0] && NombreRandom <= element.place[1])
+            {
+                KanjiStat.push({niveau:element.niveau, kanji:kanjiDataBase[NombreRandom].kanji, fail:failed, win:won, number:NombreRandom})
+                console.log(NombreRandom);
+            }
+
+        });
+    } 
+    else 
+    {
+        KanjiStat[KanjiIndex].win += won;
+        KanjiStat[KanjiIndex].fail += failed;
+
+    }
+    saveKanjiStat();
+
+}
+
+function saveKanjiStat() {
+    localStorage.setItem('KanjiStatData', JSON.stringify(KanjiStat));
+}
+
 // -------------------------------Gestion Bouton Kanjis------------------------------
 function KanjiSelectionOnLoad() {
 
@@ -2757,13 +2857,13 @@ function KanjiSelectionApparition() {
 
     const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor" onclick="ClearKanjisSelection()"></p>
     <div class="AffichageJLPT">
-        <div class="JLPTText">Un carré ≈ 50 kanji</div>
+        <div class="JLPTText">Un carré ≈ 50 kanji (N1 ≈  100) </div>
         <div class="JLPTText">JLPT N5 : <button class="JLPTButton" onclick="KanjiSelection(5,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(5, 2) ; KanjiSelectionApparition()">2</button></div>
         <div class="JLPTText">JLPT N4 : <button class="JLPTButton" onclick="KanjiSelection(4,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(4, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(4, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(4, 4) ; KanjiSelectionApparition()">4</button></div>
         <div class="JLPTText">JLPT N3 : <button class="JLPTButton" onclick="KanjiSelection(3,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(3, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(3, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(3, 4) ; KanjiSelectionApparition()">4</button><button class="JLPTButton" onclick="KanjiSelection(3, 5) ; KanjiSelectionApparition()">5</button><button class="JLPTButton" onclick="KanjiSelection(3, 6) ; KanjiSelectionApparition()">6</button><button class="JLPTButton" onclick="KanjiSelection(3, 7) ; KanjiSelectionApparition()">7</button><button class="JLPTButton" onclick="KanjiSelection(3, 8) ; KanjiSelectionApparition()">8</button></div>
         <div class="JLPTText">JLPT N2 : <button class="JLPTButton" onclick="KanjiSelection(2,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(2, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(2, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(2, 4) ; KanjiSelectionApparition()">4</button><button class="JLPTButton" onclick="KanjiSelection(2, 5) ; KanjiSelectionApparition()">5</button><button class="JLPTButton" onclick="KanjiSelection(2, 6) ; KanjiSelectionApparition()">6</button><button class="JLPTButton" onclick="KanjiSelection(2, 7) ; KanjiSelectionApparition()">7</button><button class="JLPTButton" onclick="KanjiSelection(2, 8) ; KanjiSelectionApparition()">8</button></div>
         <div class="JLPTText">JLPT N1 : <button class="JLPTButton" onclick="KanjiSelection(1,1) ; KanjiSelectionApparition()">1</button><button class="JLPTButton" onclick="KanjiSelection(1, 2) ; KanjiSelectionApparition()">2</button><button class="JLPTButton" onclick="KanjiSelection(1, 3) ; KanjiSelectionApparition()">3</button><button class="JLPTButton" onclick="KanjiSelection(1, 4) ; KanjiSelectionApparition()">4</button><button class="JLPTButton" onclick="KanjiSelection(1, 5) ; KanjiSelectionApparition()">5</button><button class="JLPTButton" onclick="KanjiSelection(1, 6) ; KanjiSelectionApparition()">6</button><button class="JLPTButton" onclick="KanjiSelection(1, 7) ; KanjiSelectionApparition()">7</button><button class="JLPTButton" onclick="KanjiSelection(1, 8) ; KanjiSelectionApparition()">8</button><button class="JLPTButton" onclick="KanjiSelection(1, 9) ; KanjiSelectionApparition()">9</button><button class="JLPTButton" onclick="KanjiSelection(1, 10) ; KanjiSelectionApparition()">10</button><button class="JLPTButton" onclick="KanjiSelection(1, 11) ; KanjiSelectionApparition()">11</button><button class="JLPTButton" onclick="KanjiSelection(1, 12) ; KanjiSelectionApparition()">12</button><button class="JLPTButton" onclick="KanjiSelection(1, 13) ; KanjiSelectionApparition()">13</button></div>
-        <button class="JLPTRetour" onclick="KanjiSelectionApparition()">Retour</button>
+        <div><button class="RevoirButton" onclick="RevisionMode()">Practice / Révisions</button> <button class="JLPTRetour" onclick="KanjiSelectionApparition()">Retour</button></div>
     </div>`;
 
     if (JLPTAfficheTrue == false) {
@@ -2782,6 +2882,123 @@ function KanjiSelectionApparition() {
 
 }
 
+function RevisionMode() {
+
+
+    const AffichageJLPTElement = document.getElementById("AffichageJLPTConteneur");
+
+    const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor" onclick="ClearKanjisSelection()"></p>
+    <div class="AffichageJLPTRevision">
+        <div class="JLPTText">Un carré ≈ 50 kanji (N1 ≈  100) Mode révisions</div>
+        <div class="JLPTText">Tout les ratés : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(0 ,0)">0</button></div>
+        <div class="JLPTText">JLPT N5 : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(5,1)">1</button><button class="JLPTButtonRevision" data-level="5" data-index="2" onclick="KanjiRevisionSelection(5, 2)">2</button></div>
+        <div class="JLPTText">JLPT N4 : <button class="JLPTButtonRevision" data-level="4" data-index="1" onclick="KanjiRevisionSelection(4,1)">1</button><button class="JLPTButtonRevision" data-level="4" data-index="2" onclick="KanjiRevisionSelection(4, 2)">2</button><button class="JLPTButtonRevision" data-level="4" data-index="3" onclick="KanjiRevisionSelection(4, 3)">3</button><button class="JLPTButtonRevision" data-level="4" data-index="4" onclick="KanjiRevisionSelection(4, 4)">4</button></div>
+        <div class="JLPTText">JLPT N3 : <button class="JLPTButtonRevision" data-level="3" data-index="1" onclick="KanjiRevisionSelection(3,1)">1</button><button class="JLPTButtonRevision" data-level="3" data-index="2" onclick="KanjiRevisionSelection(3, 2)">2</button><button class="JLPTButtonRevision" data-level="3" data-index="3" onclick="KanjiRevisionSelection(3, 3)">3</button><button class="JLPTButtonRevision" data-level="3" data-index="4" onclick="KanjiRevisionSelection(3, 4)">4</button><button class="JLPTButtonRevision" data-level="3" data-index="5" onclick="KanjiRevisionSelection(3, 5)">5</button><button class="JLPTButtonRevision" data-level="3" data-index="6" onclick="KanjiRevisionSelection(3, 6)">6</button><button class="JLPTButtonRevision" data-level="3" data-index="7" onclick="KanjiRevisionSelection(3, 7)">7</button><button class="JLPTButtonRevision" data-level="3" data-index="8" onclick="KanjiRevisionSelection(3, 8)">8</button></div>
+        <div class="JLPTText">JLPT N2 : <button class="JLPTButtonRevision" data-level="2" data-index="1" onclick="KanjiRevisionSelection(2,1)">1</button><button class="JLPTButtonRevision" data-level="2" data-index="2" onclick="KanjiRevisionSelection(2, 2)">2</button><button class="JLPTButtonRevision" data-level="2" data-index="3" onclick="KanjiRevisionSelection(2, 3)">3</button><button class="JLPTButtonRevision" data-level="2" data-index="4" onclick="KanjiRevisionSelection(2, 4)">4</button><button class="JLPTButtonRevision" data-level="2" data-index="5" onclick="KanjiRevisionSelection(2, 5)">5</button><button class="JLPTButtonRevision" data-level="2" data-index="6" onclick="KanjiRevisionSelection(2, 6)">6</button><button class="JLPTButtonRevision" data-level="2" data-index="7" onclick="KanjiRevisionSelection(2, 7)">7</button><button class="JLPTButtonRevision" data-level="2" data-index="8" onclick="KanjiRevisionSelection(2, 8)">8</button></div>
+        <div class="JLPTText">JLPT N1 : <button class="JLPTButtonRevision" data-level="1" data-index="1" onclick="KanjiRevisionSelection(1,1)">1</button><button class="JLPTButtonRevision" data-level="1" data-index="2" onclick="KanjiRevisionSelection(1, 2)">2</button><button class="JLPTButtonRevision" data-level="1" data-index="3" onclick="KanjiRevisionSelection(1, 3)">3</button><button class="JLPTButtonRevision" data-level="1" data-index="4" onclick="KanjiRevisionSelection(1, 4)">4</button><button class="JLPTButtonRevision" data-level="1" data-index="5" onclick="KanjiRevisionSelection(1, 5)">5</button><button class="JLPTButtonRevision" data-level="1" data-index="6" onclick="KanjiRevisionSelection(1, 6)">6</button><button class="JLPTButtonRevision" data-level="1" data-index="7" onclick="KanjiRevisionSelection(1, 7)">7</button><button class="JLPTButtonRevision" data-level="1" data-index="8" onclick="KanjiRevisionSelection(1, 8)">8</button><button class="JLPTButtonRevision" data-level="1" data-index="9" onclick="KanjiRevisionSelection(1, 9)">9</button><button class="JLPTButtonRevision" data-level="1" data-index="10" onclick="KanjiRevisionSelection(1, 10)">10</button><button class="JLPTButtonRevision" data-level="1" data-index="11" onclick="KanjiRevisionSelection(1, 11)">11</button><button class="JLPTButtonRevision" data-level="1" data-index="12" onclick="KanjiRevisionSelection(1, 12)">12</button><button class="JLPTButtonRevision" data-level="1" data-index="13" onclick="KanjiRevisionSelection(1, 13)">13</button></div>
+    <div><button class="RevoirButton" onclick="RevisionMode()">Practice / Révisions</button> <button class="JLPTRetour" onclick="KanjiSelectionApparition()">Retour</button></div>
+    </div>`;
+
+    if (JLPTRevisionAfficheTrue == false) {
+
+        AffichageJLPTElement.innerHTML = AffichageJLPTContent;
+        JLPTRevisionAfficheTrue = true;
+ 
+    }
+    else {
+        JLPTAfficheTrue = false;
+        KanjiSelectionApparition();
+        JLPTRevisionAfficheTrue = false;
+
+    }
+    ButtonColor();
+
+
+
+}
+
+function KanjiRevisionSelection(JLPT, Group) {
+
+const TextJLPTElement = document.getElementById("TextJLPTSelected");
+   
+
+    JLPTSelect = JLPT;
+    GroupSelect = Group;
+    KanjiRevisionList = [];
+    const AffichageJLPTElement = document.getElementById("AffichageJLPTConteneur");
+
+    let Niveau = "N"+JLPT+"G"+Group;
+    if (JLPT == 0 && Group == 0) {
+         KanjiStat.forEach(element => {
+
+        KanjiRevisionList.push(element.number);
+        
+    });
+    
+    } else 
+    {
+        KanjiStat.forEach(element => {
+
+            if (element.niveau == Niveau) {KanjiRevisionList.push(element.number);}
+            
+        });
+    }
+    
+
+    if (KanjiRevisionList.length <= 0) {
+        const AffichageJLPTContent = `<p id="PageOpacitor" class="PageOpacitor" onclick="ClearKanjisSelection()"></p>
+        <div class="AffichageJLPTRevision">
+        <div class="JLPTText">Un carré ≈ 50 kanji (N1 ≈  100) Mode révisions</div>
+        <div class="JLPTText">Tout les ratés : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(0 ,0)">0</button></div>
+        <div class="JLPTText">JLPT N5 : <button class="JLPTButtonRevision" data-level="5" data-index="1" onclick="KanjiRevisionSelection(5,1)">1</button><button class="JLPTButtonRevision" data-level="5" data-index="2" onclick="KanjiRevisionSelection(5, 2)">2</button></div>
+        <div class="JLPTText">JLPT N4 : <button class="JLPTButtonRevision" data-level="4" data-index="1" onclick="KanjiRevisionSelection(4,1)">1</button><button class="JLPTButtonRevision" data-level="4" data-index="2" onclick="KanjiRevisionSelection(4, 2)">2</button><button class="JLPTButtonRevision" data-level="4" data-index="3" onclick="KanjiRevisionSelection(4, 3)">3</button><button class="JLPTButtonRevision" data-level="4" data-index="4" onclick="KanjiRevisionSelection(4, 4)">4</button></div>
+        <div class="JLPTText">JLPT N3 : <button class="JLPTButtonRevision" data-level="3" data-index="1" onclick="KanjiRevisionSelection(3,1)">1</button><button class="JLPTButtonRevision" data-level="3" data-index="2" onclick="KanjiRevisionSelection(3, 2)">2</button><button class="JLPTButtonRevision" data-level="3" data-index="3" onclick="KanjiRevisionSelection(3, 3)">3</button><button class="JLPTButtonRevision" data-level="3" data-index="4" onclick="KanjiRevisionSelection(3, 4)">4</button><button class="JLPTButtonRevision" data-level="3" data-index="5" onclick="KanjiRevisionSelection(3, 5)">5</button><button class="JLPTButtonRevision" data-level="3" data-index="6" onclick="KanjiRevisionSelection(3, 6)">6</button><button class="JLPTButtonRevision" data-level="3" data-index="7" onclick="KanjiRevisionSelection(3, 7)">7</button><button class="JLPTButtonRevision" data-level="3" data-index="8" onclick="KanjiRevisionSelection(3, 8)">8</button></div>
+        <div class="JLPTText">JLPT N2 : <button class="JLPTButtonRevision" data-level="2" data-index="1" onclick="KanjiRevisionSelection(2,1)">1</button><button class="JLPTButtonRevision" data-level="2" data-index="2" onclick="KanjiRevisionSelection(2, 2)">2</button><button class="JLPTButtonRevision" data-level="2" data-index="3" onclick="KanjiRevisionSelection(2, 3)">3</button><button class="JLPTButtonRevision" data-level="2" data-index="4" onclick="KanjiRevisionSelection(2, 4)">4</button><button class="JLPTButtonRevision" data-level="2" data-index="5" onclick="KanjiRevisionSelection(2, 5)">5</button><button class="JLPTButtonRevision" data-level="2" data-index="6" onclick="KanjiRevisionSelection(2, 6)">6</button><button class="JLPTButtonRevision" data-level="2" data-index="7" onclick="KanjiRevisionSelection(2, 7)">7</button><button class="JLPTButtonRevision" data-level="2" data-index="8" onclick="KanjiRevisionSelection(2, 8)">8</button></div>
+        <div class="JLPTText">JLPT N1 : <button class="JLPTButtonRevision" data-level="1" data-index="1" onclick="KanjiRevisionSelection(1,1)">1</button><button class="JLPTButtonRevision" data-level="1" data-index="2" onclick="KanjiRevisionSelection(1, 2)">2</button><button class="JLPTButtonRevision" data-level="1" data-index="3" onclick="KanjiRevisionSelection(1, 3)">3</button><button class="JLPTButtonRevision" data-level="1" data-index="4" onclick="KanjiRevisionSelection(1, 4)">4</button><button class="JLPTButtonRevision" data-level="1" data-index="5" onclick="KanjiRevisionSelection(1, 5)">5</button><button class="JLPTButtonRevision" data-level="1" data-index="6" onclick="KanjiRevisionSelection(1, 6)">6</button><button class="JLPTButtonRevision" data-level="1" data-index="7" onclick="KanjiRevisionSelection(1, 7)">7</button><button class="JLPTButtonRevision" data-level="1" data-index="8" onclick="KanjiRevisionSelection(1, 8)">8</button><button class="JLPTButtonRevision" data-level="1" data-index="9" onclick="KanjiRevisionSelection(1, 9)">9</button><button class="JLPTButtonRevision" data-level="1" data-index="10" onclick="KanjiRevisionSelection(1, 10)">10</button><button class="JLPTButtonRevision" data-level="1" data-index="11" onclick="KanjiRevisionSelection(1, 11)">11</button><button class="JLPTButtonRevision" data-level="1" data-index="12" onclick="KanjiRevisionSelection(1, 12)">12</button><button class="JLPTButtonRevision" data-level="1" data-index="13" onclick="KanjiRevisionSelection(1, 13)">13</button></div>
+        <div><button class="RevoirButton" onclick="RevisionMode()">Practice / Révisions</button> Pas de Kanji dans la liste</div>
+        </div>`;
+        
+        AffichageJLPTElement.innerHTML = AffichageJLPTContent;
+        JLPTRevisionAfficheTrue = true;
+        ButtonColor();
+    }
+    else {
+        SelectionKanji = [0, KanjiRevisionList.length-1];
+
+        localStorage.setItem("SelectionSaved", JSON.stringify(SelectionKanji));
+        localStorage.setItem("JLPTSaved", JLPT);
+        localStorage.setItem("GroupSaved", Group);
+
+        TextJLPTElement.innerText = "Niveau : JLPT N" + JLPT + " Groupe " +Group + "Révision";
+        AffichageJLPTElement.innerHTML = "";
+        JLPTRevisionAfficheTrue = false;
+        JLPTAfficheTrue = false;
+        PartieReset();
+    }
+
+
+}
+
+function ButtonColor() {
+
+    const boutons = document.querySelectorAll('.JLPTButtonRevision');
+
+    boutons.forEach(element => {
+        element.classList.remove('vert', 'rouge');
+        const niveau = element.getAttribute('data-level');
+        const index = element.getAttribute('data-index');
+
+        if ( KanjiStat.some(kanji => kanji.niveau === `N${niveau}G${index}`))  
+            {
+                element.classList.add('vert');
+            }
+        else {element.classList.add('rouge');}
+        
+   });
+
+
+}
+
 function ClearKanjisSelection() {
 
     const AffichageJLPTElement = document.getElementById("AffichageJLPTConteneur");
@@ -2794,7 +3011,7 @@ function ClearKanjisSelection() {
 function KanjiSelection(JLPT, Group) {
 
     const TextJLPTElement = document.getElementById("TextJLPTSelected");
-
+    KanjiRevisionList = [];
 
     JLPTSelect = JLPT;
     GroupSelect = Group;
@@ -2852,17 +3069,45 @@ function KanjiDansTableau(Kanji) { //  Crée une variable string qui contient to
 
     let CeKanji = "";
     let KanjiDuTableau = kanjiDataBase[0];
+    if (Kanji != 0) 
+    {
+        for (let i = Kanji[0]; i <= Kanji[1]; i++) { // Pour chaque éléments dans le tableau(valeurs) de kanji crée une ligne dans un tableau
 
-    for (let i = Kanji[0]; i <= Kanji[1]; i++) { // Pour chaque éléments dans le tableau(valeurs) de kanji crée une ligne dans un tableau
+            KanjiDuTableau = kanjiDataBase[i];
+            CeKanji += `
+                <tr>
+                    <td>${KanjiDuTableau.kanji}</td>
+                    <td>${KanjiDuTableau.sens}</td>
+                    <td>${KanjiDuTableau.kata}</td>
+                    <td>${KanjiDuTableau.hira}</td>
+                </tr>`;
 
-        KanjiDuTableau = kanjiDataBase[i];
-        CeKanji += `
-            <tr>
-                <td>${KanjiDuTableau.kanji}</td>
-                <td>${KanjiDuTableau.sens}</td>
-                <td>${KanjiDuTableau.kata}</td>
-                <td>${KanjiDuTableau.hira}</td>
-            </tr>`;
+        }
+    } else {
+
+        KanjiStat.forEach(element => {
+            let W = element.win;
+            let F = element.fail;
+            let Perc = 0; // Valeur par défaut si 0 tentative
+
+            let total = W + F;
+
+            if (total > 0) {
+                // On divise les victoires par le total (Victoires + Échecs)
+                Perc = Math.round((W / total) * 100); 
+            }
+
+            CeKanji += `
+                <tr>
+                    <td>${element.niveau}</td>
+                    <td>${element.kanji}</td>
+                    <td>${element.fail}</td>
+                    <td>${element.win}</td>
+                    <td>${Perc}%</td>
+                </tr>`;
+        });
+
+
 
     }
 
@@ -2880,6 +3125,7 @@ function AfficheTableauKanji() {
         <p id="PageOpacitor" class="PageOpacitor" onclick="ClearTableauMenu()"></p>
         <div id="ZoneTableau" class="TableauKanjiBox">
             <div class="TableauKanjiBox2">
+                <div> STATS KANJI <button class="KanjiTableauBouton" onclick="AfficheKanji(0, 0)">+</button></div>
                 <div>--- JLPT N5 ---</div>
                 <div class="JLPT5Section">
                     <div>Groupe 1 <button class="KanjiTableauBouton" onclick="AfficheKanji(5, 1)">+</button><div id="JLPT5G1Tableau" class="JLPTTableau"></div></div>
@@ -3038,6 +3284,7 @@ function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de
     else if (JLPT == 1 && Group == 11) {KanjiDisplayed = [1922, 2014]; MonAffichage = AfficheTableauJLPT[32]; if (AfficheKanjiNow[32] == 0) {AfficheKanjiNow[32] = 1; NumJLPT = 1;} else {AfficheKanjiNow[32] = 0 ; NumJLPT = 0;};}
     else if (JLPT == 1 && Group == 12) {KanjiDisplayed = [2015, 2107]; MonAffichage = AfficheTableauJLPT[33]; if (AfficheKanjiNow[33] == 0) {AfficheKanjiNow[33] = 1; NumJLPT = 1;} else {AfficheKanjiNow[33] = 0 ; NumJLPT = 0;};}
     else if (JLPT == 1 && Group == 13) {KanjiDisplayed = [2108, 2196]; MonAffichage = AfficheTableauJLPT[34]; if (AfficheKanjiNow[34] == 0) {AfficheKanjiNow[34] = 1; NumJLPT = 1;} else {AfficheKanjiNow[34] = 0 ; NumJLPT = 0;};}
+    else if (JLPT == 0 && Group == 0) {KanjiDisplayed = 0; MonAffichage = AfficheTableauJLPT[34]; if (AfficheKanjiNow[34] == 0) {AfficheKanjiNow[34] = 1; NumJLPT = 1;} else {AfficheKanjiNow[34] = 0 ; NumJLPT = 0;};}
 
 
     AfficheTableauJLPT.forEach(element => {
@@ -3057,18 +3304,37 @@ function AfficheKanji(JLPT, Group) { // Affiche le tableau de kanji à l'aide de
     if (NumJLPT == 1) { //Affiche le tableau des kanji en suprimant tous les élements du <body>
                                  // Si le bouton est préssé pour la première fois
         ContenuBody = document.body.innerHTML;
-        Zone.innerHTML = ` 
-        <table class="Tableau_Kanji">
-            <tr>
-                <td>Kanji</td>
-                <td>Sens</td>
-                <td>Lecture On</td>
-                <td>lecture Kun</td>
-            </tr>
-            ${KanjiDansTableau(KanjiDisplayed)}
+        if (JLPT != 0) {
+            Zone.innerHTML = ` 
+            <table class="Tableau_Kanji">
+                <tr>
+                    <td>Kanji</td>
+                    <td>Sens</td>
+                    <td>Lecture On</td>
+                    <td>lecture Kun</td>
+                </tr>
+                ${KanjiDansTableau(KanjiDisplayed)}
 
 
-        </table>`;
+            </table>`;
+        } else {
+
+              Zone.innerHTML = ` 
+            <table class="Tableau_Kanji">
+                <tr>
+                    <td>Niveau</td>
+                    <td>Kanji</td>
+                    <td>fail</td>
+                    <td>win</td>
+                    <td>Ratio</td>
+                </tr>
+                ${KanjiDansTableau(KanjiDisplayed)}
+
+
+            </table>`;
+
+
+        }
         
         /*let ContenuTableau = MonAffichage.innerHTML; 
         document.body.innerHTML = `<h1>Kanji Learner</h1>
@@ -3371,7 +3637,7 @@ function RNGToggle() {
 
 function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la page)
 
-    console.log((SelectionKanji[1] - SelectionKanji[0])-1);
+    console.log((SelectionKanji[1] - SelectionKanji[0]+1));
     console.log(CompteurKanji+1);
     
     if (RNG == false)
@@ -3379,29 +3645,36 @@ function AffichageKanji() { // Affiche le kanji actuel (celui au milieu de la pa
         CompteurKanji++;
         if (HistoriqueNombreRandom == []) {
 
-            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0]+1)) + SelectionKanji[0];
+            if (KanjiRevisionList.length >0) {NombreRandom = KanjiRevisionList[NombreRandom];}
             HistoriqueNombreRandom.push(NombreRandom);
         }
         else if (CompteurKanji <= ((SelectionKanji[1] - SelectionKanji[0])-1) && CompteurKanji > 0)
         {
             while (HistoriqueNombreRandom.includes(NombreRandom)) {
 
-                NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+                NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0]+1)) + SelectionKanji[0];
+                if (KanjiRevisionList.length >0) {NombreRandom = KanjiRevisionList[NombreRandom];}
             }
             HistoriqueNombreRandom.push(NombreRandom);
         }
         else {
             CompteurKanji = 0;
             HistoriqueNombreRandom = [];
-            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+            NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0]+1)) + SelectionKanji[0];
+            if (KanjiRevisionList.length >0) {NombreRandom = KanjiRevisionList[NombreRandom];}
             HistoriqueNombreRandom.push(NombreRandom);
         }
     }
     else {
 
-        NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0])) + SelectionKanji[0];
+        NombreRandom = Math.floor(Math.random() * (SelectionKanji[SelectionKanji.length-1] - SelectionKanji[0]+1)) + SelectionKanji[0];
+        if (KanjiRevisionList.length >0) {NombreRandom = KanjiRevisionList[NombreRandom];}
 
     }
+    
+
+
     PremierItem = kanjiDataBase[NombreRandom];
 
     premierKanji = PremierItem.kanji;

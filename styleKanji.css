@@ -131,7 +131,7 @@ button:hover {
 .KanjiButton {
 
     width: 30%;
-    height: 4vh;
+    height: vh;
     font-size: 2vh;
     font-weight: bold;
     border-radius: 5px;
@@ -230,8 +230,10 @@ button:hover {
     top: 12.5vh;
     position: relative;
     border: 3px solid black;
-    width: 18vh;
+    width: calc(15vw/2 + 8vh/2);
     background-color: rgb(224, 224, 224);
+    align-content: center;
+    justify-content: center;
     user-select: none;
 
 }
@@ -240,45 +242,37 @@ button:hover {
 
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 }
 
 .Combo {
 
-    font-size: 2.3vh;
-    margin-right: 3px;
+    font-size: calc(1.5vw + 0.8vh);
+
     display: flex;
 }
 
-.ComboNumberBox {
-
-    display: flex;
-    flex-direction: column;
-
-}
 
 .ComboNumber {
 
-    font-size: 2.7vh;
-    justify-content: center;
+    font-size: calc(1.7vw + 0.8vh);
     font-weight: bold;
-    text-align: left;
+
     
 }
 
 .BestCombo {
 
-    font-size: 2.3vh;
-    margin-right: 3px;
-    display: flex;
+    font-size: calc(1.3vw + 0.8vh);
+
 }
 
 .BestComboNumber {
 
-   font-size: 2.7vh;
-    justify-content: center;
+   font-size: calc(1.7vw + 0.6vh);
+
     font-weight: bold;
-    text-align: left;
+
     
 
 }
@@ -501,20 +495,44 @@ button:hover {
 .AffichageJLPT {
     display: flex;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.92);
     border: 7px solid darkgray;
     border-radius: 10px;
     position: absolute;
+    align-content: center;
+    justify-content: center;
     top: 30%;
-    right: 33%;
+    left: 27%;
     align-self: center;
-    justify-self: center;
     width: 50%;
-    height: 45vh;
+    height: 55%;
     align-items: flex-start;
     min-width: 250px;
     max-width: 400px;
     padding: 10px;
+}
+
+
+.AffichageJLPTRevision {
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(47, 192, 192, 0.751);
+    border: 7px solid rgb(15, 229, 237);
+    border-radius: 10px;
+    position: absolute;
+    align-content: center;
+    justify-content: center;
+    top: 30%;
+    left: 27%;
+    align-self: center;
+    width: 50%;
+    height: 55%;
+    align-items: flex-start;
+    min-width: 250px;
+    max-width: 400px;
+    padding: 10px;
+
 }
 
 .JLPTTableauDisplay {
@@ -532,12 +550,36 @@ button:hover {
 
 .JLPTButton {
 
-    width: 5vh;
-    height: 5vh;
+    width: 4vh;
+    height: 4vh;
     font-size: 2vh;
     background-color: white;
     border-radius: 5px;
     margin-left: 1px;
+}
+
+.JLPTButtonRevision.vert {
+
+    background-color: rgba(89, 212, 89, 0.891);
+
+}
+
+.JLPTButtonRevision.rouge {
+
+    background-color: rgba(250, 52, 52, 0.882);
+
+}
+
+
+.JLPTButtonRevision {
+
+    width: 4vh;
+    height: 4vh;
+    font-size: 2vh;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 1px;
+
 }
 
 .JLPTRetour {
@@ -546,9 +588,11 @@ button:hover {
     font-size: 1.7ch;
     height: 3ch;
     width: 8ch;
-    bottom: 0%;
+   
     right: 10%;
 }
+
+
 
 
 .TableauKanjiBox {
